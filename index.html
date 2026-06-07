@@ -217,6 +217,7 @@
         .hero-h1 .line { display: block; overflow: hidden; }
         .hero-h1 .word { display: inline-block; animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) both; }
         .hero-h1 .blue { color: var(--blue-bright); }
+        .hero-h1 .line.small { font-size: clamp(18px, 2.0vw, 26px); font-weight: 600; }
 
         @keyframes slideUp { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -668,7 +669,7 @@
             <h1 class="hero-h1">
                 <span class="line"><span class="word" style="animation-delay:0.15s">Comprendre les</span></span>
                 <span class="line"><span class="word blue" style="animation-delay:0.28s">marchés financiers</span></span>
-                <span class="line"><span class="word" style="animation-delay:0.41s">simplement.</span></span>
+                <span class="line small"><span class="word" style="animation-delay:0.41s">tout en préservant ta carrière et ta vie.</span></span>
             </h1>
             <div class="hero-actions">
                 <a href="#community" class="btn-blue">
