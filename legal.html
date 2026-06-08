@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions légales — TapiTrade</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep:    #040C1A;
+            --bg-surface: #080F1C;
+            --bg-card:    #0C1528;
+            --blue:        #1A40C8;
+            --blue-bright: #4D72FF;
+            --blue-border: rgba(26,64,200,0.38);
+            --white:       #FFFFFF;
+            --text-primary:   #F4F6FF;
+            --text-secondary: #A4AECB;
+            --border: rgba(255,255,255,0.06);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body:    'Inter', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav { background: rgba(4,12,26,0.96); border-bottom: 1px solid var(--border); padding: 12px 0; }
+        .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 72px; width: auto; filter: brightness(0) invert(1); }
+        .nav-back { font-size: 13px; color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+        .nav-back:hover { color: var(--white); }
+
+        /* CONTENT */
+        .legal-wrap { max-width: 760px; margin: 0 auto; padding: 80px 32px 120px; }
+
+        .legal-hero { margin-bottom: 64px; }
+        .legal-label { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-bright); display: block; margin-bottom: 16px; }
+        .legal-divider { width: 32px; height: 2px; background: var(--blue-bright); margin: 0 0 24px; opacity: 0.5; }
+        .legal-h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+        .legal-date { font-size: 13px; color: var(--text-secondary); }
+
+        /* Sections */
+        .legal-section { margin-bottom: 56px; padding: 36px 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; }
+        .legal-section-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--blue-bright); letter-spacing: -0.01em; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .legal-h3 { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text-primary); margin: 20px 0 8px; }
+        .legal-section p { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 12px; }
+        .legal-section p:last-child { margin-bottom: 0; }
+        .legal-section ul { list-style: none; padding: 0; }
+        .legal-section ul li { font-size: 14px; color: var(--text-secondary); padding: 4px 0 4px 16px; position: relative; line-height: 1.65; }
+        .legal-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--blue-bright); opacity: 0.5; }
+        .legal-section a { color: var(--blue-bright); text-decoration: none; }
+        .legal-section a:hover { text-decoration: underline; }
+        strong { color: var(--text-primary); font-weight: 600; }
+
+        /* Footer */
+        .legal-footer { text-align: center; padding-top: 48px; border-top: 1px solid var(--border); }
+        .legal-footer p { font-size: 13px; color: var(--text-secondary); }
+        .legal-footer a { color: var(--blue-bright); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="assets/Logo-TapiTrade-no-Backgroung.png" alt="TapiTrade">
+        </a>
+        <a href="index.html" class="nav-back">
+            ← Retour au site
+        </a>
+    </div>
+</nav>
+
+<div class="legal-wrap">
+
+    <div class="legal-hero">
+        <span class="legal-label">Informations légales</span>
+        <div class="legal-divider"></div>
+        <h1 class="legal-h1">Mentions légales &amp;<br>Confidentialité</h1>
+        <p class="legal-date">Dernière mise à jour : juin 2026</p>
+    </div>
+
+    <!-- IMPRESSUM -->
+    <div class="legal-section">
+        <h2 class="legal-section-title">Impressum (§ 5 TMG)</h2>
+        <p><strong>Verantwortlich für den Inhalt / Responsable du contenu :</strong></p>
+        <p>
+            Dany Tapigue<br>
+            Löhrgasse 4a<br>
+            50126 Bergheim<br>
+            Deutschland / Allemagne
+        </p>
+        <h3 class="legal-h3">Contact</h3>
+        <p>
+            E-Mail : <a href="mailto:info@tapitrade.com">info@tapitrade.com</a><br>
+            Téléphone / WhatsApp : <a href="https://wa.me/4915565290159">+49 155 652 90159</a>
+        </p>
+        <h3 class="legal-h3">Statut juridique</h3>
+        <p>Kleingewerbe — Kleinunternehmer im Sinne von § 19 Abs. 1 UStG.<br>
+        Pas d'assujettissement à la TVA (Umsatzsteuer non applicable).</p>
+        <h3 class="legal-h3">Activité déclarée</h3>
+        <p>Dienstleistungen im Finanzwesen : Analyse der Finanzmärkte, makroökonomische Analyse, Finanzbildung und Coaching (éducation financière, analyse des marchés et coaching).</p>
+    </div>
+
+    <!-- MENTIONS LÉGALES -->
+    <div class="legal-section">
+        <h2 class="legal-section-title">Mentions légales</h2>
+        <h3 class="legal-h3">Hébergement</h3>
+        <p>Ce site est hébergé par <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis — <a href="https://vercel.com" target="_blank">vercel.com</a></p>
+        <h3 class="legal-h3">Propriété intellectuelle</h3>
+        <p>L'ensemble du contenu de ce site (textes, graphiques, logo, vidéos) est la propriété exclusive de TapiTrade / Dany Tapigue, sauf mention contraire. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
+        <h3 class="legal-h3">Avertissement — Aucun conseil en investissement</h3>
+        <p>Le contenu de ce site est <strong>exclusivement éducatif</strong>. Les informations, analyses et formations proposées ne constituent en aucun cas un conseil en investissement, une recommandation d'achat ou de vente de valeurs mobilières, ni une incitation à investir.</p>
+        <p>Tout investissement comporte des risques, y compris la perte en capital. TapiTrade ne saurait être tenu responsable de décisions financières prises sur la base des contenus publiés.</p>
+        <h3 class="legal-h3">Liens externes</h3>
+        <p>Ce site contient des liens vers des plateformes tierces (YouTube, Discord, Facebook, Jotform). TapiTrade n'est pas responsable du contenu de ces sites externes.</p>
+    </div>
+
+    <!-- POLITIQUE DE CONFIDENTIALITÉ -->
+    <div class="legal-section">
+        <h2 class="legal-section-title">Politique de confidentialité (RGPD / DSGVO)</h2>
+        <h3 class="legal-h3">Données collectées</h3>
+        <p>Dans le cadre des formulaires d'inscription (Masterclass, Workshop, appel découverte), les données suivantes sont collectées :</p>
+        <ul>
+            <li>Prénom et nom de famille</li>
+            <li>Adresse e-mail</li>
+            <li>Numéro de téléphone</li>
+            <li>Motif d'intérêt (champ facultatif)</li>
+        </ul>
+        <h3 class="legal-h3">Finalité du traitement</h3>
+        <p>Ces données sont collectées uniquement pour vous recontacter dans le cadre de votre demande (confirmation d'inscription, rappels d'événement, prise de contact).</p>
+        <h3 class="legal-h3">Base légale</h3>
+        <p>Le traitement est fondé sur votre consentement (Art. 6 al. 1 lit. a RGPD), exprimé lors de la soumission du formulaire.</p>
+        <h3 class="legal-h3">Sous-traitants</h3>
+        <ul>
+            <li><strong>Jotform Inc.</strong> — collecte et stockage des formulaires (<a href="https://www.jotform.com/privacy/" target="_blank">politique de confidentialité</a>)</li>
+            <li><strong>Vercel Inc.</strong> — hébergement du site</li>
+            <li><strong>YouTube (Google LLC)</strong> — liens vers des contenus vidéo</li>
+        </ul>
+        <h3 class="legal-h3">Durée de conservation</h3>
+        <p>Les données sont conservées le temps nécessaire au traitement de votre demande, et au maximum 2 ans après le dernier contact.</p>
+        <h3 class="legal-h3">Vos droits</h3>
+        <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+        <ul>
+            <li>Droit d'accès à vos données personnelles</li>
+            <li>Droit de rectification</li>
+            <li>Droit à l'effacement ("droit à l'oubli")</li>
+            <li>Droit à la limitation du traitement</li>
+            <li>Droit d'opposition</li>
+            <li>Droit à la portabilité</li>
+        </ul>
+        <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:info@tapitrade.com">info@tapitrade.com</a></p>
+        <h3 class="legal-h3">Cookies</h3>
+        <p>Ce site n'utilise pas de cookies de suivi ou d'analyse. Aucun traceur publicitaire n'est installé.</p>
+        <h3 class="legal-h3">Réclamation</h3>
+        <p>En cas de litige, vous pouvez introduire une réclamation auprès de l'autorité de contrôle compétente. En Allemagne : <strong>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW)</strong> — <a href="https://www.ldi.nrw.de" target="_blank">ldi.nrw.de</a></p>
+    </div>
+
+    <div class="legal-footer">
+        <p>© 2026 TapiTrade — Dany Tapigue · <a href="index.html">Retour au site</a> · <a href="mailto:info@tapitrade.com">info@tapitrade.com</a></p>
+    </div>
+
+</div>
+
+</body>
+</html>
