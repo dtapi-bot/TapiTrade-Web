@@ -1,0 +1,24 @@
+# ==========================================================
+#  Fichiers INTERNES — ne JAMAIS publier sur le site
+# ==========================================================
+
+# --- Listes de contacts / données personnelles (RGPD) ---
+rappel-whatsapp-final.html
+appels-calendly-whatsapp.html
+whatsapp-rappel-masterclass.html
+envoi-whatsapp.html
+
+# --- Emails marketing (usage interne) ---
+email-relance-workshop.html
+
+# --- Flyers, miniatures & previews (sources + exports) ---
+flyer-discord.html
+flyer-masterclass.html
+thumbnail-youtube.html
+preview-whatsapp.html
+Flyer-*.png
+Miniature-*.png
+
+# --- QR codes (utilisés uniquement par les flyers) ---
+assets/qr-discord.png
+assets/qr-masterclass.png
