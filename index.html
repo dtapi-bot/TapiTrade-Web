@@ -77,6 +77,9 @@
         .btn-blue:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(26,64,200,0.38); }
         .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; background: transparent; color: var(--text-primary); border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-body); font-size: 14px; font-weight: 500; text-decoration: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
         .btn-ghost:hover { border-color: var(--blue-border); background: var(--blue-dim); transform: translateY(-2px); }
+        .btn-wa { display: inline-flex; align-items: center; gap: 10px; padding: 13px 28px; background: #25D366; color: #fff; border: none; border-radius: 4px; font-family: var(--font-body); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
+        .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.34); }
+        .btn-wa svg { width: 20px; height: 20px; flex-shrink: 0; }
 
         /* ══════════════════════════════════════
            HERO
@@ -995,9 +998,14 @@
             <span class="label reveal" style="display:block;margin-bottom:16px;">Une question ?</span>
             <div class="section-divider" style="margin:0 auto 20px;"></div>
             <h2 class="cta-h reveal d1">On t'appelle.</h2>
-            <p class="cta-sub reveal d2">Réserve un appel gratuit de 15 min avec l'équipe TapiTrade — on répond à tes questions, sans engagement.</p>
+            <p class="cta-sub reveal d2">Pas de formulaire : écris-nous directement sur WhatsApp pour demander ton échange gratuit de 15 min. On te recontacte rapidement, sans engagement.</p>
             <div class="reveal d3">
-                <a href="https://calendly.com/tapitrade/echange-15min" target="_blank" class="btn-blue" style="font-size:15px;padding:13px 32px;">Réserver mon appel gratuit</a>
+                <a href="https://wa.me/4915565290159?text=Bonjour%20TapiTrade%2C%20je%20souhaite%20demander%20un%20%C3%A9change%20gratuit%20de%2015%20min%20pour%20poser%20mes%20questions." target="_blank" rel="noopener" class="btn-wa" aria-label="Demander un échange sur WhatsApp">
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#fff" d="M16.04 4C9.96 4 5.02 8.94 5.02 15.02c0 1.94.51 3.84 1.48 5.51L4.9 26.1l5.7-1.49a11 11 0 0 0 5.43 1.42h.01c6.08 0 11.02-4.94 11.02-11.02C27.06 8.94 22.12 4 16.04 4Zm0 20.2h-.01a9.16 9.16 0 0 1-4.67-1.28l-.34-.2-3.38.89.9-3.3-.22-.34a9.13 9.13 0 0 1-1.4-4.86c0-5.05 4.11-9.16 9.17-9.16 2.45 0 4.75.96 6.48 2.69a9.1 9.1 0 0 1 2.68 6.48c0 5.06-4.11 9.17-9.16 9.17Zm5.03-6.86c-.28-.14-1.63-.8-1.88-.9-.25-.09-.43-.13-.61.14-.18.27-.7.9-.86 1.08-.16.18-.32.2-.59.07-.28-.14-1.16-.43-2.21-1.36-.82-.73-1.37-1.63-1.53-1.9-.16-.28-.02-.43.12-.56.12-.12.28-.32.41-.48.14-.16.18-.27.28-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.02-.22-.53-.45-.46-.61-.46l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.98 2.65 1.12 2.84.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.56.58.66.21 1.26.18 1.73.11.53-.08 1.63-.67 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.18-.53-.32Z"/>
+                    </svg>
+                    Demander mon échange sur WhatsApp
+                </a>
             </div>
             <p class="cta-legal reveal d4">Contenu exclusivement éducatif. Aucun conseil en investissement.</p>
         </div>
