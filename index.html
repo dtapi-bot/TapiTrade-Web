@@ -358,6 +358,22 @@
         .ev-btn { display: block; margin-top: 16px; padding: 11px 20px; text-align: center; background: transparent; border: 1px solid #F5C518; color: #F5C518; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s; }
         .ev-btn:hover { background: #F5C518; color: #040C1A; }
 
+        /* ── Strasbourg special event ── */
+        .stras-wrapper { margin-bottom: 64px; }
+        .stras-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #F5C518; margin-bottom: 16px; }
+        .stras-event { display: flex; gap: 48px; align-items: center; background: var(--bg-card); border: 1px solid rgba(245,197,24,0.28); border-radius: 10px; padding: 36px 40px; transition: border-color 0.3s, background 0.3s; }
+        .stras-event:hover { border-color: rgba(245,197,24,0.55); background: var(--bg-card-h); }
+        .stras-content { flex: 1; display: flex; flex-direction: column; }
+        .stras-title { font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3; }
+        .stras-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
+        .stras-address { margin-top: 10px; font-size: 13px; color: var(--text-secondary); }
+        .stras-flyer { flex: 0 0 300px; }
+        .stras-flyer img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+        @media (max-width: 768px) {
+            .stras-event { flex-direction: column-reverse; padding: 28px 24px; gap: 28px; }
+            .stras-flyer { flex: none; width: 100%; max-width: 340px; margin: 0 auto; }
+        }
+
         /* ══ TESTIMONIALS ══ */
         #testimonials { padding: 120px 0; background: var(--bg-surface); }
         .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 56px; }
@@ -868,6 +884,26 @@
 <!-- ══ EVENTS ══ -->
 <section id="events">
     <div class="container">
+        <!-- ── Strasbourg ── -->
+        <div class="stras-wrapper reveal">
+            <span class="stras-label">📍 Prochain événement</span>
+            <div class="stras-event">
+                <div class="stras-content">
+                    <span class="ev-tag" style="color:#F5C518;border-color:rgba(245,197,24,0.35);background:rgba(245,197,24,0.08);width:fit-content;">TapiTrade en présentiel à Strasbourg</span>
+                    <span class="ev-tag" style="color:var(--blue-bright);border-color:var(--blue-border);background:var(--blue-dim);width:fit-content;margin-top:8px;">Session d'info</span>
+                    <h3 class="stras-title">Les marchés financiers pour<br>la création de patrimoine</h3>
+                    <p class="stras-desc">Une soirée pour découvrir comment les marchés financiers peuvent devenir un levier puissant pour construire votre patrimoine sur le long terme. Accessible à tous, sans prérequis.</p>
+                    <div class="ev-date" style="margin-top:20px;">Mercredi 29 Juillet 2026 &middot; 17h30 – 20h00</div>
+                    <div class="stras-address">📍 Rue de Nomeny, 6700 Strasbourg</div>
+                    <div class="ev-foot">Session 100% gratuite &mdash; places limitées à 15</div>
+                    <a href="https://form.jotform.com/261546085956064" target="_blank" rel="noopener noreferrer" class="ev-btn" style="width:fit-content;padding:11px 28px;">Réserver ma place</a>
+                </div>
+                <div class="stras-flyer">
+                    <img src="assets/Flyer-TapiTrade%20%C3%A0%20Strasbourg.png" alt="Session TapiTrade Strasbourg 29 Juillet 2026">
+                </div>
+            </div>
+        </div>
+
         <div class="section-head">
             <span class="label reveal">TapiTrade propose</span>
             <div class="section-divider"></div>
