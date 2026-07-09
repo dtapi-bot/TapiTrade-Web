@@ -114,6 +114,36 @@ main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; width:100%; }
 }
 .hero-sub em { font-style:normal; color:var(--gold); }
 
+/* ── Coming Soon ─────────────────────────────────────── */
+.coming-soon-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+.coming-soon-text {
+  transform: rotate(-38deg);
+  font-size: clamp(52px, 13vw, 130px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.15;
+  white-space: nowrap;
+  user-select: none;
+  color: rgba(254,239,119,0.13);
+  -webkit-text-stroke: 1.5px rgba(254,239,119,0.38);
+  text-shadow: 0 0 60px rgba(254,239,119,0.08);
+}
+#btn-simulate {
+  opacity: 0.38;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
 /* ── Simulator Grid ─────────────────────────────────── */
 .simulator { display:grid; gap:24px; width:100%; }
 @media(min-width:900px){
@@ -414,6 +444,11 @@ tr:hover td { background:rgba(255,255,255,0.02); }
     </a>
   </div>
 </header>
+
+<!-- Overlay "DISPONIBLE BIENTÔT" -->
+<div class="coming-soon-overlay" aria-hidden="true">
+  <div class="coming-soon-text">DISPONIBLE<br>BIENTÔT</div>
+</div>
 
 <!-- MAIN -->
 <main>
@@ -756,7 +791,7 @@ function getInputs() {
   };
 }
 
-function runSimulation() {
+function runSimulation() { return; /* désactivé — bientôt disponible */
   const { initial, monthly, years, rate } = getInputs();
   if (monthly <= 0 && initial <= 0) return;
 
