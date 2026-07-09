@@ -28,7 +28,7 @@
 
 /* ── Reset ──────────────────────────────────────────── */
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
 
 body {
   background-color: var(--bg);
@@ -42,6 +42,8 @@ body {
   font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ── Header ─────────────────────────────────────────── */
@@ -84,30 +86,30 @@ header {
 .site-footer span { color:var(--brand); font-weight:600; }
 
 /* ── Main ───────────────────────────────────────────── */
-main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; }
+main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; width:100%; }
 
 /* ── Hero ───────────────────────────────────────────── */
 .hero {
   display:flex; flex-direction:column; align-items:center;
   text-align:center; margin-bottom:60px; gap:12px;
+  width:100%;
 }
+.hero > * { max-width:100%; }
 .hero-brand { font-size:13px; font-weight:600; color:var(--text-dim); letter-spacing:0.02em; }
 .hero-brand .accent { color:var(--brand); }
 .hero h1 {
   font-size:clamp(13px,1.9vw,21px);
   font-weight:800; letter-spacing:-0.02em;
-  line-height:1.35; text-wrap:balance;
+  line-height:1.35; width:100%;
 }
-.hero h1 .blue {
-  color:var(--brand);
-}
+.hero h1 .blue { color:var(--brand); }
 @media(min-width:900px){
   .hero h1 .blue { white-space:nowrap; }
 }
 .hero-sub {
   font-size:clamp(14px,2vw,18px); font-weight:600;
   color:var(--text-dim); letter-spacing:-0.01em;
-  text-wrap:balance;
+  width:100%;
 }
 .hero-sub em { font-style:normal; color:var(--gold); }
 
@@ -120,10 +122,17 @@ main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; }
 
 /* ── Mobile centrage ─────────────────────────────────── */
 @media(max-width:899px){
-  .results-panel { width:100%; }
-  .result-cards  { width:100%; }
-  .chart-card    { width:100%; }
-  .table-card    { width:100%; }
+  .simulator       { width:100%; }
+  .results-panel   { width:100%; }
+  .result-cards    { width:100%; }
+  .chart-card      { width:100%; }
+  .table-card      { width:100%; }
+  .pedagogy-section{ width:100%; }
+  .pedagogy-card   { padding:24px 20px; }
+  .pedagogy-card p { max-width:100%; }
+  .summary-section { width:100%; }
+  .summary-card    { padding:24px 20px; }
+  .legal           { width:100%; }
   .result-card.card-featured { justify-content:center; text-align:center; }
   .card-featured > div:first-child { width:100%; }
 }
