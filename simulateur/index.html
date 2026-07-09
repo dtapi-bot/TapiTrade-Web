@@ -28,7 +28,7 @@
 
 /* ── Reset ──────────────────────────────────────────── */
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; overflow-x:hidden; }
+html { scroll-behavior:smooth; overflow-x:hidden; max-width:100%; }
 
 body {
   background-color: var(--bg);
@@ -43,6 +43,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  max-width: 100vw;
   width: 100%;
 }
 
@@ -126,25 +127,25 @@ main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; width:100%; }
   .header-back-label { display:none; }
   .logo-name { font-size:14px; }
 
-  /* layout */
-  .simulator       { width:100%; }
-  .results-panel   { width:100%; }
-  .result-cards    { width:100%; }
-  .chart-card      { width:100%; }
-  .table-card      { width:100%; }
-  .pedagogy-section{ width:100%; }
-  .pedagogy-card   { padding:22px 18px; }
+  /* layout — min-width:0 empêche le débordement intrinsèque sur grid/flex */
+  .simulator, .form-sticky, .results-panel,
+  .result-cards, .result-card,
+  .chart-card, .table-card,
+  .pedagogy-section, .pedagogy-card,
+  .summary-section, .summary-card, .legal { min-width:0; width:100%; }
+
+  .pedagogy-card   { padding:20px 14px; }
   .pedagogy-card p { max-width:100%; }
-  .summary-section { width:100%; }
-  .summary-card    { padding:22px 18px; }
-  .legal           { width:100%; }
+  .summary-card    { padding:20px 14px; }
 
   /* form */
-  .form-card       { padding:20px 16px; }
+  .form-card       { padding:18px 14px; }
   .dur-grid        { grid-template-columns:repeat(3,1fr); }
 
-  /* result cards */
+  /* result cards — colonne unique pour éviter les demi-largeurs trop étroites */
+  .result-cards    { grid-template-columns:1fr; }
   .result-card.card-featured {
+    grid-column: span 1;
     flex-direction:column;
     align-items:flex-start;
     text-align:left;
@@ -152,6 +153,11 @@ main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; width:100%; }
   }
   .card-featured > div:first-child { width:100%; }
   .perf-badge { align-self:flex-start; }
+  .card-featured .card-value { font-size:28px; }
+
+  /* stats cards côte à côte sur mobile avec largeur assurée */
+  .result-card:not(.card-featured) { padding:14px; }
+  .card-label { font-size:10px; }
 }
 
 /* ── Form Card ──────────────────────────────────────── */
