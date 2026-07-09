@@ -100,7 +100,9 @@ main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; }
 }
 .hero h1 .blue {
   color:var(--brand);
-  white-space:nowrap;
+}
+@media(min-width:900px){
+  .hero h1 .blue { white-space:nowrap; }
 }
 .hero-sub {
   font-size:clamp(14px,2vw,18px); font-weight:600;
