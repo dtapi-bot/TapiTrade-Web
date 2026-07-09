@@ -120,21 +120,38 @@ main { max-width:1120px; margin:0 auto; padding:80px 24px 72px; width:100%; }
   .form-sticky { position:sticky; top:74px; }
 }
 
-/* ── Mobile centrage ─────────────────────────────────── */
+/* ── Mobile ──────────────────────────────────────────── */
 @media(max-width:899px){
+  /* header */
+  .header-back-label { display:none; }
+  .logo-name { font-size:14px; }
+
+  /* layout */
   .simulator       { width:100%; }
   .results-panel   { width:100%; }
   .result-cards    { width:100%; }
   .chart-card      { width:100%; }
   .table-card      { width:100%; }
   .pedagogy-section{ width:100%; }
-  .pedagogy-card   { padding:24px 20px; }
+  .pedagogy-card   { padding:22px 18px; }
   .pedagogy-card p { max-width:100%; }
   .summary-section { width:100%; }
-  .summary-card    { padding:24px 20px; }
+  .summary-card    { padding:22px 18px; }
   .legal           { width:100%; }
-  .result-card.card-featured { justify-content:center; text-align:center; }
+
+  /* form */
+  .form-card       { padding:20px 16px; }
+  .dur-grid        { grid-template-columns:repeat(3,1fr); }
+
+  /* result cards */
+  .result-card.card-featured {
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+    gap:10px;
+  }
   .card-featured > div:first-child { width:100%; }
+  .perf-badge { align-self:flex-start; }
 }
 
 /* ── Form Card ──────────────────────────────────────── */
@@ -387,7 +404,7 @@ tr:hover td { background:rgba(255,255,255,0.02); }
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
         <path d="M19 12H5M5 12l7-7M5 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      Retour au site
+      <span class="header-back-label">Retour au site</span>
     </a>
   </div>
 </header>
