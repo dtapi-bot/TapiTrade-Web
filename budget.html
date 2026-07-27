@@ -182,10 +182,12 @@
   }
   .savings-card.ok { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.35); }
   .savings-card.warn { background: rgba(255,92,92,0.08); border-color: rgba(255,92,92,0.35); }
+  .savings-card.warn.amber { background: rgba(245,196,81,0.08); border-color: rgba(245,196,81,0.35); }
   .savings-card .sc-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
   .savings-card .sc-value { font-size: 30px; font-weight: 700; }
   .savings-card.ok .sc-value { color: var(--green); }
   .savings-card.warn .sc-value { color: var(--red); }
+  .savings-card.warn.amber .sc-value { color: var(--amber); }
   .savings-card .sc-note { font-size: 12.5px; color: var(--text); margin-top: 10px; line-height: 1.5; }
 
   .cta-card {
@@ -475,6 +477,7 @@ function calc() {
   const savingsNote = document.getElementById('savingsNote');
   const ctaCard = document.getElementById('ctaCard');
   const ctaText = document.getElementById('ctaText');
+  const ctaBtn = document.getElementById('ctaBtn');
 
   if (salaire <= 0) {
     savingsValue.textContent = '—';
@@ -487,27 +490,50 @@ function calc() {
   const reste = salaire - totalAll;
   ctaCard.classList.add('show');
 
-  if (epargne === 0) {
-    savingsCard.className = 'savings-card warn';
-    savingsValue.textContent = '0 € mis de côté';
-    savingsNote.textContent = `Commence par le point 1 : combien te payes-tu en premier, avant toute autre dépense ? Vise 15-20% de ton salaire (${fmtEuro(salaire * SAVINGS_MIN / 100)} à ${fmtEuro(salaire * SAVINGS_TARGET / 100)}).`;
-    ctaText.textContent = "Tu n'as pas encore de discipline d'épargne — c'est le point de départ de tout investissement. La communauté TapiTrade t'accompagne pour structurer tes finances et commencer à investir sereinement.";
-  } else if (epargnePct < SAVINGS_MIN) {
-    savingsCard.className = 'savings-card warn';
-    savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
-    const manque = (SAVINGS_MIN / 100 * salaire) - epargne;
-    savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est en dessous du minimum recommandé de 15% — il manque ${fmtEuro(manque)} pour l'atteindre. Augmente-la avant de regarder le reste du budget.`;
-    ctaText.textContent = "Tu épargnes, mais pas encore assez pour investir sereinement sur le long terme. Viens structurer ta discipline financière avec la communauté TapiTrade.";
-  } else if (reste < 0) {
-    savingsCard.className = 'savings-card warn';
-    savingsValue.textContent = fmtEuro(reste);
-    savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est correcte, mais même après l'avoir mise de côté, tes dépenses dépassent ce qu'il te reste de ${fmtEuro(Math.abs(reste))}. Regarde les blocs marqués en rouge à droite : ce sont eux qui posent problème.`;
-    ctaText.textContent = "Ton réflexe de te payer en premier est là — il manque juste l'équilibre du reste du budget. La communauté TapiTrade peut t'aider à le structurer avant d'investir.";
+  // Paliers : vert >=15% (et budget qui tient) -> Workshop
+  //           jaune 8-15% (ou vert mais budget qui ne tient pas) -> Masterclass
+  //           rouge <8% -> Masterclass
+  let tier;
+  if (epargnePct >= SAVINGS_MIN) {
+    tier = reste >= 0 ? 'green' : 'yellow';
+  } else if (epargnePct >= 8) {
+    tier = 'yellow';
   } else {
+    tier = 'red';
+  }
+
+  if (tier === 'green') {
     savingsCard.className = 'savings-card ok';
     savingsValue.textContent = fmtEuro(reste) + ' de marge';
     savingsNote.textContent = `Tu te payes en premier (${epargnePct.toFixed(1)}%${epargnePct >= SAVINGS_TARGET ? ', au-dessus de l\'objectif de 20%' : ''}), et ton budget tient : il te reste encore ${fmtEuro(reste)} après toutes tes dépenses.`;
-    ctaText.textContent = "Ta discipline financière est solide — tu es prêt(e) à faire fructifier cette épargne. Rejoins la communauté TapiTrade pour apprendre à investir intelligemment sur les marchés.";
+    ctaText.textContent = "Ta discipline financière est solide — tu es prêt(e) à structurer un vrai plan d'investissement. Le Workshop TapiTrade t'accompagne pour investir avec méthode et conviction.";
+    ctaBtn.textContent = 'Découvrir le Workshop →';
+    ctaBtn.href = 'index.html#workshop-offer';
+  } else if (tier === 'yellow') {
+    savingsCard.className = 'savings-card warn amber';
+    if (epargnePct >= SAVINGS_MIN && reste < 0) {
+      savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
+      savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est correcte, mais même après l'avoir mise de côté, tes dépenses dépassent ce qu'il te reste de ${fmtEuro(Math.abs(reste))}. Ton budget ne suit pas encore.`;
+    } else {
+      savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
+      savingsNote.textContent = `Tu épargnes ${epargnePct.toFixed(1)}% — un bon début, mais encore en dessous du minimum recommandé de 15%. Continue à ajuster ton budget.`;
+    }
+    ctaText.textContent = "Tu as déjà de bons réflexes, mais pas encore une discipline assez solide pour investir sereinement sur le long terme. La Masterclass gratuite TapiTrade t'aide à structurer tes finances avant d'investir.";
+    ctaBtn.textContent = 'Découvrir la Masterclass gratuite →';
+    ctaBtn.href = 'index.html#masterclass-offer';
+  } else {
+    savingsCard.className = 'savings-card warn';
+    if (epargne === 0) {
+      savingsValue.textContent = '0 € mis de côté';
+      savingsNote.textContent = `Commence par le point 1 : combien te payes-tu en premier, avant toute autre dépense ? Vise 15-20% de ton salaire (${fmtEuro(salaire * SAVINGS_MIN / 100)} à ${fmtEuro(salaire * SAVINGS_TARGET / 100)}).`;
+    } else {
+      savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
+      const manque = (SAVINGS_MIN / 100 * salaire) - epargne;
+      savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est largement en dessous du minimum recommandé de 15% — il manque ${fmtEuro(manque)} pour l'atteindre.`;
+    }
+    ctaText.textContent = "Tu n'as pas encore de discipline d'épargne — c'est le point de départ de tout investissement. La Masterclass gratuite TapiTrade t'aide à comprendre pourquoi et comment commencer.";
+    ctaBtn.textContent = 'Découvrir la Masterclass gratuite →';
+    ctaBtn.href = 'index.html#masterclass-offer';
   }
 }
 
