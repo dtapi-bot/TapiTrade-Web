@@ -406,7 +406,7 @@ CATEGORIES.forEach(cat => {
       <span class="target-badge" id="target-${cat.key}"></span>
     </div>
     <div class="cat-input-row">
-      <input type="number" min="0" step="5" inputmode="decimal" id="in-${cat.key}" placeholder="0">
+      <input type="number" min="0" step="5" inputmode="decimal" id="in-${cat.key}" placeholder="0" aria-label="${cat.label}">
       <span class="suffix">€</span>
     </div>`;
   catInputsEl.appendChild(row);
