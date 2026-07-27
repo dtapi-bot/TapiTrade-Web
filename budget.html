@@ -396,6 +396,7 @@ const SAVINGS_TARGET = 20;
 const catInputsEl = document.getElementById('catInputs');
 const resultRowsEl = document.getElementById('resultRows');
 const salaireEl = document.getElementById('salaire');
+let lastTier = null;
 
 CATEGORIES.forEach(cat => {
   const row = document.createElement('div');
@@ -496,6 +497,7 @@ function calc() {
     savingsNote.textContent = 'Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.';
     savingsCard.className = 'savings-card ok';
     ctaCard.classList.remove('show');
+    lastTier = null;
     return;
   }
 
@@ -512,6 +514,13 @@ function calc() {
     tier = 'yellow';
   } else {
     tier = 'red';
+  }
+
+  if (tier !== lastTier) {
+    if (typeof plausible === 'function') {
+      plausible('Diagnostic Shown', { props: { tier: tier } });
+    }
+    lastTier = tier;
   }
 
   if (tier === 'green') {
