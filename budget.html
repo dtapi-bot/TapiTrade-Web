@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TapiTrade Budget</title>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-SK0WMk9RFdyXIZXFsgAUt.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 <style>
   :root {
     --bg:          #040C1A;
@@ -541,6 +547,16 @@ salaireEl.addEventListener('input', calc);
 document.getElementById('in-epargne').addEventListener('input', calc);
 CATEGORIES.forEach(cat => {
   document.getElementById(`in-${cat.key}`).addEventListener('input', calc);
+});
+
+document.getElementById('ctaBtn').addEventListener('click', function() {
+  if (typeof plausible !== 'function') return;
+  const card = document.getElementById('savingsCard');
+  const tier = card.classList.contains('ok') ? 'green'
+    : card.classList.contains('amber') ? 'yellow'
+    : 'red';
+  const destination = this.href.includes('workshop-offer') ? 'Workshop' : 'Masterclass';
+  plausible('CTA Click', { props: { tier: tier, destination: destination } });
 });
 
 calc();
