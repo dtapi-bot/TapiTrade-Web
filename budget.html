@@ -465,7 +465,13 @@ function calc() {
   if (salaire > 0 && epargne > 0) {
     epargnePct = (epargne / salaire) * 100;
     epargnePctEl.textContent = epargnePct.toFixed(1) + '%';
-    epargnePctEl.className = epargnePct >= SAVINGS_MIN ? 'result-pct ok' : 'result-pct over';
+    if (epargnePct >= SAVINGS_MIN) {
+      epargnePctEl.className = 'result-pct ok';
+    } else if (epargnePct >= 8) {
+      epargnePctEl.className = 'result-pct warn';
+    } else {
+      epargnePctEl.className = 'result-pct over';
+    }
   } else {
     epargnePctEl.textContent = '—';
     epargnePctEl.className = 'result-pct neutral';
