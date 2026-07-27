@@ -190,18 +190,18 @@
 
   .cta-card {
     margin-top: 14px; border-radius: var(--radius-md); padding: 18px 20px;
-    background: var(--brand-dim); border: 1px solid var(--border-blue);
+    background: var(--gold-dim); border: 1px solid rgba(254,239,119,0.35);
     display: none;
   }
   .cta-card.show { display: block; }
   .cta-card .cta-text { font-size: 13px; color: var(--text); line-height: 1.5; margin-bottom: 12px; }
   .cta-card .cta-btn {
     display: inline-flex; align-items: center; gap: 6px;
-    background: var(--brand); color: #fff; text-decoration: none;
-    font-size: 13.5px; font-weight: 600; padding: 10px 18px; border-radius: 8px;
-    transition: background 0.15s;
+    background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none;
+    font-size: 13.5px; font-weight: 600; padding: 9px 18px; border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
   }
-  .cta-card .cta-btn:hover { background: #3D5FE0; }
+  .cta-card .cta-btn:hover { background: var(--gold); color: #040C1A; }
 
   .total-bar { margin-top: 18px; }
   .total-bar .tb-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
