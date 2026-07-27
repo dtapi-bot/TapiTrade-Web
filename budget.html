@@ -188,6 +188,21 @@
   .savings-card.warn .sc-value { color: var(--red); }
   .savings-card .sc-note { font-size: 12.5px; color: var(--text); margin-top: 10px; line-height: 1.5; }
 
+  .cta-card {
+    margin-top: 14px; border-radius: var(--radius-md); padding: 18px 20px;
+    background: var(--brand-dim); border: 1px solid var(--border-blue);
+    display: none;
+  }
+  .cta-card.show { display: block; }
+  .cta-card .cta-text { font-size: 13px; color: var(--text); line-height: 1.5; margin-bottom: 12px; }
+  .cta-card .cta-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--brand); color: #fff; text-decoration: none;
+    font-size: 13.5px; font-weight: 600; padding: 10px 18px; border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .cta-card .cta-btn:hover { background: #3D5FE0; }
+
   .total-bar { margin-top: 18px; }
   .total-bar .tb-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
   .total-bar .tb-track { background: var(--surface); border-radius: 6px; height: 8px; overflow: hidden; }
@@ -338,6 +353,11 @@
         <div class="sc-value" id="savingsValue">—</div>
         <div class="sc-note" id="savingsNote">Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.</div>
       </div>
+
+      <div class="cta-card" id="ctaCard">
+        <div class="cta-text" id="ctaText"></div>
+        <a href="index.html#cta" class="cta-btn" id="ctaBtn">Rejoindre la communauté →</a>
+      </div>
     </div>
 
   </div>
@@ -453,33 +473,41 @@ function calc() {
   const savingsCard = document.getElementById('savingsCard');
   const savingsValue = document.getElementById('savingsValue');
   const savingsNote = document.getElementById('savingsNote');
+  const ctaCard = document.getElementById('ctaCard');
+  const ctaText = document.getElementById('ctaText');
 
   if (salaire <= 0) {
     savingsValue.textContent = '—';
     savingsNote.textContent = 'Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.';
     savingsCard.className = 'savings-card ok';
+    ctaCard.classList.remove('show');
     return;
   }
 
   const reste = salaire - totalAll;
+  ctaCard.classList.add('show');
 
   if (epargne === 0) {
     savingsCard.className = 'savings-card warn';
     savingsValue.textContent = '0 € mis de côté';
     savingsNote.textContent = `Commence par le point 1 : combien te payes-tu en premier, avant toute autre dépense ? Vise 15-20% de ton salaire (${fmtEuro(salaire * SAVINGS_MIN / 100)} à ${fmtEuro(salaire * SAVINGS_TARGET / 100)}).`;
+    ctaText.textContent = "Tu n'as pas encore de discipline d'épargne — c'est le point de départ de tout investissement. La communauté TapiTrade t'accompagne pour structurer tes finances et commencer à investir sereinement.";
   } else if (epargnePct < SAVINGS_MIN) {
     savingsCard.className = 'savings-card warn';
     savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
     const manque = (SAVINGS_MIN / 100 * salaire) - epargne;
     savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est en dessous du minimum recommandé de 15% — il manque ${fmtEuro(manque)} pour l'atteindre. Augmente-la avant de regarder le reste du budget.`;
+    ctaText.textContent = "Tu épargnes, mais pas encore assez pour investir sereinement sur le long terme. Viens structurer ta discipline financière avec la communauté TapiTrade.";
   } else if (reste < 0) {
     savingsCard.className = 'savings-card warn';
     savingsValue.textContent = fmtEuro(reste);
     savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est correcte, mais même après l'avoir mise de côté, tes dépenses dépassent ce qu'il te reste de ${fmtEuro(Math.abs(reste))}. Regarde les blocs marqués en rouge à droite : ce sont eux qui posent problème.`;
+    ctaText.textContent = "Ton réflexe de te payer en premier est là — il manque juste l'équilibre du reste du budget. La communauté TapiTrade peut t'aider à le structurer avant d'investir.";
   } else {
     savingsCard.className = 'savings-card ok';
     savingsValue.textContent = fmtEuro(reste) + ' de marge';
     savingsNote.textContent = `Tu te payes en premier (${epargnePct.toFixed(1)}%${epargnePct >= SAVINGS_TARGET ? ', au-dessus de l\'objectif de 20%' : ''}), et ton budget tient : il te reste encore ${fmtEuro(reste)} après toutes tes dépenses.`;
+    ctaText.textContent = "Ta discipline financière est solide — tu es prêt(e) à faire fructifier cette épargne. Rejoins la communauté TapiTrade pour apprendre à investir intelligemment sur les marchés.";
   }
 }
 
