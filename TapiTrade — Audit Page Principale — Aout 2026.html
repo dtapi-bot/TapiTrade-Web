@@ -202,10 +202,10 @@
       <div class="value">8.3</div>
       <div class="tag">Nav resserrée, mobile vérifié fonctionnel, quelques nits a11y</div>
     </div>
-    <div class="score-box" style="--tone:var(--amber)">
+    <div class="score-box" style="--tone:var(--green)">
       <div class="label">Technique</div>
-      <div class="value">6.5</div>
-      <div class="tag">~4,3 Mo d'images non optimisées, tiré vers le bas par ce seul point</div>
+      <div class="value">8.1</div>
+      <div class="tag">Images optimisées (-97%), plus aucun point bloquant identifié</div>
     </div>
     <div class="score-box" style="--tone:var(--amber)">
       <div class="label">Business</div>
@@ -228,7 +228,7 @@
   <section>
     <div class="section-head"><h2>Technique</h2><span class="tagline">performance, robustesse, SEO</span></div>
     <div class="findings">
-      <div class="card watch"><span class="mark">!</span><div class="body"><h3>Images ~20-40x plus lourdes que nécessaire</h3><p><code>Photo-1.png</code> (2,2 Mo, 1024×1536px) affichée en 340×340px, et <code>Logo-TapiTrade-no-Backgroung.png</code> (2,1 Mo, 1536×1024px) affiché à 96px de hauteur dans le header. ~4,3 Mo à eux deux pour des éléments visuellement petits — le plus gros poste de poids de page, avec impact direct sur le LCP mobile. Un JPEG/WebP à la bonne résolution ramènerait chacun à quelques dizaines de Ko ; le logo est même un bon candidat SVG.</p><span class="cite">assets/Photo-1.png, assets/Logo-TapiTrade-no-Backgroung.png</span></div></div>
+      <div class="card done"><span class="mark">+</span><div class="body"><h3>Images redimensionnées et compressées <span class="pill resolu">Résolu</span></h3><p>Logo redimensionné (1536×1024 → 480×320, PNG optimisé) : 2,1 Mo → 29,9 Ko. Photo du fondateur redimensionnée et convertie en WebP (alpha préservé, transparence vérifiée) : 2,2 Mo → 82,4 Ko, <code>Photo-1.png</code> devenu inutilisé supprimé. ~4,3 Mo → ~112 Ko au total (-97%). Qualité visuelle vérifiée sans perte (Playwright, nav + section Fondateur).</p><span class="cite">assets/Logo-TapiTrade-no-Backgroung.png, assets/Photo-1.webp</span></div></div>
       <div class="card info"><span class="mark">i</span><div class="body"><h3>Contenu 100% dépendant du JS pour être visible</h3><p>Chaque section utilise <code>.reveal { opacity:0 }</code>, levé uniquement par un IntersectionObserver JS, sans repli CSS/noscript. Vérifié avec un scroll réel simulé (Playwright) : tout s'affiche correctement pour un visiteur normal — donc pas un bug aujourd'hui, juste une fragilité si le JS venait à échouer.</p></div></div>
       <div class="card done"><span class="mark">+</span><div class="body"><h3>Tous les liens externes vérifiés en direct <span class="pill resolu">Résolu</span></h3><p>JotForm Masterclass, JotForm Workshop, Discord, Facebook, YouTube — les 5 renvoient 200 OK. Aucun lien mort.</p></div></div>
       <div class="card done"><span class="mark">+</span><div class="body"><h3>SEO de base solide</h3><p>Title/description/canonical/OG/Twitter Card présents et cohérents, <code>robots.txt</code> + <code>sitemap.xml</code> en place, <code>google-site-verification</code> posé, <code>lang="fr"</code> sur le <code>&lt;html&gt;</code>.</p></div></div>
@@ -267,7 +267,7 @@
     <div class="roadmap-phase next">
       <div class="phase-head"><span class="phase-tag">Prioritaire</span><span class="phase-title">Impact direct, effort faible</span></div>
       <ul class="roadmap-list">
-        <li><strong>Compresser/reconvertir <code>Photo-1.png</code> et le logo</strong> — JPEG/WebP à la résolution d'affichage réelle (340px et 96px), ou SVG pour le logo. Gain de ~4 Mo attendu, quelques minutes de travail.</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong>Compresser/reconvertir <code>Photo-1.png</code> et le logo</strong> — résolu le 01/08, -97% (~4,3 Mo → ~112 Ko).</li>
         <li><strong>Ajouter des événements Plausible sur les CTA clés</strong> — Masterclass, Workshop, Zoom mensuel, WhatsApp (×2, avec une prop pour distinguer les deux), YouTube/Discord/Facebook. Même mécanique que <code>budget.html</code>, à répliquer ici.</li>
       </ul>
     </div>
@@ -284,8 +284,8 @@
   <!-- ── Verdict ── -->
   <div class="verdict">
     <h2>Verdict</h2>
-    <p>La page fait bien son travail de vitrine : identité visuelle cohérente, histoire personnelle authentique désormais mise en avant (corrigée aujourd'hui), aucun lien mort, base SEO propre. <strong>Le vrai point faible n'est pas visible à l'œil</strong> — c'est le poids des deux images (~4,3 Mo à elles seules) et l'absence totale de tracking d'événement sur une page qui est justement le point d'entrée de tout le funnel TapiTrade.</p>
-    <p>Les deux corrections prioritaires (compression d'images, événements Plausible) sont rapides et changent directement soit l'expérience mobile, soit la capacité de Dany à savoir ce qui convertit réellement sur cette page — contrairement à <code>budget.html</code>, qui a déjà les deux.</p>
+    <p>La page fait bien son travail de vitrine : identité visuelle cohérente, histoire personnelle authentique désormais mise en avant (corrigée aujourd'hui), aucun lien mort, base SEO propre. Le poids des images (~4,3 Mo) était le point faible technique le plus concret — <strong>corrigé le jour même</strong> (-97%, qualité vérifiée sans perte).</p>
+    <p>Il reste un vrai angle mort côté business : l'absence totale de tracking d'événement sur une page qui est justement le point d'entrée de tout le funnel TapiTrade. Ajouter les événements Plausible sur les CTA clés (même mécanique que <code>budget.html</code>, qui l'a déjà) redonnerait à Dany une vraie visibilité sur ce qui convertit ici.</p>
   </div>
 
   <footer>TapiTrade — Audit page principale — 01/08/2026</footer>
