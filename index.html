@@ -79,7 +79,7 @@
         /* ══ NAV ══ */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 6px 0; transition: all 0.4s ease; }
         nav.scrolled { background: rgba(4,12,26,0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); padding: 4px 0; }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+        .nav-inner { display: flex; align-items: center; justify-content: flex-start; gap: 48px; }
         .nav-logo img { height: 96px; width: auto; display: block; filter: brightness(0) invert(1); }
         .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
         .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
@@ -482,6 +482,7 @@
 
         @media (max-width: 768px) {
             #hero { min-height: auto; }
+            .nav-inner { justify-content: space-between; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
             .hero-scroll { display: none; }
@@ -531,7 +532,7 @@
                 <li><a href="#community">Communauté</a></li>
                 <li><a href="#offers">Annonces</a></li>
                 <li><a href="#testimonials">Témoignages</a></li>
-                <li><a href="budget.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Budget</a></li>
+                <li style="margin-left:auto;"><a href="budget.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Budget</a></li>
                 <li><a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Simulateur</a></li>
                 <li><a href="https://analytics.tapitrade.com" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Analytics</a></li>
             </ul>
