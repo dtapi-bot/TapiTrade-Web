@@ -495,7 +495,13 @@
             .founder-stats { flex-direction: row; }
             .comm-grid { grid-template-columns: 1fr; }
             .events-grid { grid-template-columns: 1fr; }
-            .testi-grid { grid-template-columns: 1fr; }
+            .testi-grid {
+                display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch; gap: 16px; padding-bottom: 8px;
+                scrollbar-width: none;
+            }
+            .testi-grid::-webkit-scrollbar { display: none; }
+            .testi-card { flex: 0 0 86%; scroll-snap-align: center; }
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-brand p { max-width: 100%; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
