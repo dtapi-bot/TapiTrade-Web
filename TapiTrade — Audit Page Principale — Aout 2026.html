@@ -207,10 +207,10 @@
       <div class="value">8.1</div>
       <div class="tag">Images optimisées (-97%), plus aucun point bloquant identifié</div>
     </div>
-    <div class="score-box" style="--tone:var(--amber)">
+    <div class="score-box" style="--tone:var(--green)">
       <div class="label">Business</div>
-      <div class="value">5.8</div>
-      <div class="tag">Zéro tracking d'événement sur les CTA de la page hub du funnel</div>
+      <div class="value">7.4</div>
+      <div class="tag">Tracking agrégé déjà actif (Outbound Link, Form) — finesse par CTA non prioritaire pour Dany</div>
     </div>
   </div>
 
@@ -240,8 +240,8 @@
   <section>
     <div class="section-head"><h2>Business & Tracking</h2><span class="tagline">visibilité sur le funnel</span></div>
     <div class="findings">
-      <div class="card watch"><span class="mark">!</span><div class="body"><h3>Zéro tracking d'événement sur la page la plus stratégique</h3><p>Plausible ne trace ici que les pageviews automatiques. Aucun événement sur "Réserve ta place" (Masterclass), "Je suis intéressé(e)" (Workshop), "Rejoins DISCORD", les 2 boutons WhatsApp, ni les cartes YouTube/Discord/Facebook. Contrairement à <code>budget.html</code> qui trace déjà <code>Diagnostic Shown</code>/<code>CTA Click</code> avec tier — cette page hub, elle, n'a aucune visibilité sur ce qui convertit réellement.</p></div></div>
-      <div class="card info"><span class="mark">i</span><div class="body"><h3>Deux CTA WhatsApp, deux messages pré-remplis différents</h3><p>Le bouton flottant ("plus d'informations") et celui de la section CTA ("échange gratuit de 15 min") partent vers le même numéro sans distinction de source une fois dans la conversation — et sans tracking Plausible non plus (cf. finding ci-dessus) pour savoir lequel a été cliqué.</p></div></div>
+      <div class="card done"><span class="mark">+</span><div class="body"><h3>Correction : le tracking n'est pas à zéro <span class="pill resolu">Précisé</span></h3><p>Constat initial trop sévère — Plausible a les goals automatiques "Outbound Link: Click" (10 uniques/65 total) et "Form: Submission" (4/14) déjà actifs, qui couvrent de fait les clics JotForm, WhatsApp et réseaux sociaux en agrégé. Ce qui manque reste plus fin que "zéro" : pas de nom distinct par CTA (Masterclass vs Workshop vs Discord), contrairement à <code>budget.html</code> qui a des événements nommés avec props. Dany juge que ce n'est pas prioritaire pour l'instant — noté pour plus tard, pas un blocage actuel.</p></div></div>
+      <div class="card info"><span class="mark">i</span><div class="body"><h3>Deux CTA WhatsApp, deux messages pré-remplis différents</h3><p>Le bouton flottant et celui de la section CTA partent vers le même numéro avec des messages différents. Explicitement jugé non prioritaire par Dany pour l'instant — gardé en mémoire, pas d'action prévue.</p></div></div>
     </div>
   </section>
 
@@ -266,18 +266,20 @@
   <section>
     <div class="section-head"><h2>Roadmap</h2><span class="tagline">par ordre d'impact</span></div>
     <div class="roadmap-phase next">
-      <div class="phase-head"><span class="phase-tag">Prioritaire</span><span class="phase-title">Impact direct, effort faible</span></div>
+      <div class="phase-head"><span class="phase-tag">Fait le 01/08</span><span class="phase-title">Tout ce qui était priorisé est traité</span></div>
       <ul class="roadmap-list">
-        <li style="text-decoration:line-through;opacity:0.55;"><strong>Compresser/reconvertir <code>Photo-1.png</code> et le logo</strong> — résolu le 01/08, -97% (~4,3 Mo → ~112 Ko).</li>
-        <li><strong>Ajouter des événements Plausible sur les CTA clés</strong> — Masterclass, Workshop, Zoom mensuel, WhatsApp (×2, avec une prop pour distinguer les deux), YouTube/Discord/Facebook. Même mécanique que <code>budget.html</code>, à répliquer ici.</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong>Compresser/reconvertir <code>Photo-1.png</code> et le logo</strong> — -97% (~4,3 Mo → ~112 Ko).</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong>Clarifier</strong> la mention "3 Workshops" dans le témoignage d'OlliV.</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong>Retirer "Christian"</strong> du témoignage d'Estelle C.</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong><code>aria-label</code></strong> sur les icônes sociales du footer.</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong>Carrousel témoignages</strong> au swipe sur mobile.</li>
       </ul>
     </div>
     <div class="roadmap-phase later">
-      <div class="phase-head"><span class="phase-tag">Ensuite</span><span class="phase-title">Cohérence de contenu, mineur</span></div>
+      <div class="phase-head"><span class="phase-tag">Si besoin un jour</span><span class="phase-title">Explicitement non prioritaire pour Dany</span></div>
       <ul class="roadmap-list">
-        <li style="text-decoration:line-through;opacity:0.55;"><strong>Clarifier</strong> la mention "3 Workshops" dans le témoignage d'OlliV. — résolu le 01/08.</li>
-        <li style="text-decoration:line-through;opacity:0.55;"><strong>Retirer "Christian"</strong> du témoignage d'Estelle C. — résolu le 01/08.</li>
-        <li style="text-decoration:line-through;opacity:0.55;"><strong><code>aria-label</code></strong> sur les icônes sociales du footer — résolu le 01/08.</li>
+        <li><strong>Événements Plausible nommés par CTA</strong> — les goals automatiques (Outbound Link, Form) donnent déjà un signal agrégé ; nommer chaque CTA individuellement (comme <code>budget.html</code>) apporterait plus de finesse, mais jugé non urgent pour l'instant.</li>
+        <li><strong>Distinguer les 2 messages WhatsApp</strong> par la source — également non prioritaire.</li>
       </ul>
     </div>
   </section>
@@ -285,8 +287,8 @@
   <!-- ── Verdict ── -->
   <div class="verdict">
     <h2>Verdict</h2>
-    <p>La page fait bien son travail de vitrine : identité visuelle cohérente, histoire personnelle authentique désormais mise en avant (corrigée aujourd'hui), aucun lien mort, base SEO propre. Le poids des images (~4,3 Mo) était le point faible technique le plus concret — <strong>corrigé le jour même</strong> (-97%, qualité vérifiée sans perte).</p>
-    <p>Il reste un vrai angle mort côté business : l'absence totale de tracking d'événement sur une page qui est justement le point d'entrée de tout le funnel TapiTrade. Ajouter les événements Plausible sur les CTA clés (même mécanique que <code>budget.html</code>, qui l'a déjà) redonnerait à Dany une vraie visibilité sur ce qui convertit ici.</p>
+    <p>La page fait bien son travail de vitrine : identité visuelle cohérente, histoire personnelle authentique désormais mise en avant, contenu et témoignages cohérents avec l'offre actuelle, images optimisées (-97%), carrousel mobile, aucun lien mort, base SEO propre, accessibilité renforcée. <strong>Tous les points priorisés de cet audit ont été traités le jour même</strong> — c'est un résultat rare pour un audit fraîchement publié.</p>
+    <p>Une correction assumée en cours de route : le finding initial "zéro tracking" était trop sévère — Plausible trace déjà les clics sortants et soumissions de formulaire en agrégé. Ce qui manque (un nom d'événement par CTA, comme sur <code>budget.html</code>) est une amélioration réelle mais explicitement non prioritaire pour Dany aujourd'hui — c'est noté, pas oublié.</p>
   </div>
 
   <footer>TapiTrade — Audit page principale — 01/08/2026</footer>
