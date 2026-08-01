@@ -199,8 +199,8 @@
     </div>
     <div class="score-box" style="--tone:var(--green)">
       <div class="label">UX / Design</div>
-      <div class="value">8.3</div>
-      <div class="tag">Nav resserrée, mobile vérifié fonctionnel, quelques nits a11y</div>
+      <div class="value">8.7</div>
+      <div class="tag">Nav resserrée, carrousel témoignages mobile, aria-label ajouté</div>
     </div>
     <div class="score-box" style="--tone:var(--green)">
       <div class="label">Technique</div>
@@ -221,6 +221,7 @@
       <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Mission et Fondateur réécrits</strong> — la citation Mission répétait quasiment le H1 juste au-dessus ; remplacée, avec la bio Fondateur, par la vraie histoire (entrepreneuriat classique → marchés financiers comme levier compatible famille + emploi à temps plein, résident en Allemagne, entrepreneur depuis les années 2010).</span></div>
       <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Communauté précisée</strong> — "une communauté active" devient "une communauté active de partage et d'échange sur Discord" dans la bio Fondateur.</span></div>
       <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Espacement nav desktop resserré</strong> — <code>space-between</code> laissait un grand vide entre le logo et "Mission" ; passé en <code>flex-start</code> + gap fixe, avec le trio Budget/Simulateur/Analytics poussé à droite via <code>margin-left:auto</code>. Comportement mobile (logo gauche / hamburger droite) préservé et vérifié.</span></div>
+      <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Témoignages en carrousel au swipe sur mobile</strong> — 6 cartes empilées faisaient ~2000-3000px de scroll ; remplacé par un scroll horizontal <code>scroll-snap</code> (une carte + aperçu de la suivante), sans librairie JS. Desktop inchangé (grille 3 colonnes).</span></div>
     </div>
   </section>
 
@@ -257,7 +258,7 @@
   <section>
     <div class="section-head"><h2>Accessibilité</h2><span class="tagline">mineur</span></div>
     <div class="findings single">
-      <div class="card info"><span class="mark">i</span><div class="body"><h3>Icônes sociales du footer identifiées par <code>title</code> seul</h3><p>Les liens YouTube/Discord/Facebook/Email du footer (<code>class="soc"</code>) n'ont qu'un attribut <code>title</code>, pas fiable au clavier, au lecteur d'écran ni au tactile mobile. Un <code>aria-label</code> en plus serait plus robuste — mineur, n'empêche pas l'usage.</p></div></div>
+      <div class="card done"><span class="mark">+</span><div class="body"><h3>Icônes sociales du footer : <code>aria-label</code> ajouté <span class="pill resolu">Résolu</span></h3><p>Les 4 liens du footer (<code>class="soc"</code>) ont désormais <code>title</code> + <code>aria-label</code> — accessible au clavier, au lecteur d'écran et au tactile mobile.</p></div></div>
     </div>
   </section>
 
@@ -276,7 +277,7 @@
       <ul class="roadmap-list">
         <li style="text-decoration:line-through;opacity:0.55;"><strong>Clarifier</strong> la mention "3 Workshops" dans le témoignage d'OlliV. — résolu le 01/08.</li>
         <li style="text-decoration:line-through;opacity:0.55;"><strong>Retirer "Christian"</strong> du témoignage d'Estelle C. — résolu le 01/08.</li>
-        <li><strong><code>aria-label</code></strong> sur les icônes sociales du footer, en plus de <code>title</code>.</li>
+        <li style="text-decoration:line-through;opacity:0.55;"><strong><code>aria-label</code></strong> sur les icônes sociales du footer — résolu le 01/08.</li>
       </ul>
     </div>
   </section>
