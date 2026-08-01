@@ -1,0 +1,293 @@
+<title>TapiTrade — Audit Page Principale (Août 2026)</title>
+<style>
+  :root {
+    --bg: #040C1A;
+    --surface: #091428;
+    --elevated: #0E1D35;
+    --border: rgba(255,255,255,0.09);
+    --text: #F4F6FB;
+    --text-dim: #9AA6C4;
+    --text-faint: #6B7797;
+    --blue: #4D72FF;
+    --blue-dim: rgba(77,114,255,0.12);
+    --blue-border: rgba(77,114,255,0.28);
+    --gold: #FEEF77;
+    --gold-dim: rgba(254,239,119,0.10);
+    --green: #4ADE80;
+    --green-dim: rgba(74,222,128,0.10);
+    --amber: #F5A524;
+    --amber-dim: rgba(245,165,36,0.10);
+    --red: #F0576B;
+    --red-dim: rgba(240,87,107,0.10);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'Consolas', 'SF Mono', monospace;
+  }
+  :root[data-theme="light"] {
+    --bg: #F3F5FA;
+    --surface: #FFFFFF;
+    --elevated: #EDF0F8;
+    --border: rgba(15,23,42,0.10);
+    --text: #0F172A;
+    --text-dim: #4B5878;
+    --text-faint: #8791AB;
+    --blue-dim: rgba(77,114,255,0.08);
+    --gold-dim: rgba(217,180,20,0.10);
+    --green-dim: rgba(22,163,74,0.08);
+    --amber-dim: rgba(217,119,6,0.08);
+    --red-dim: rgba(220,38,38,0.08);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #F3F5FA;
+      --surface: #FFFFFF;
+      --elevated: #EDF0F8;
+      --border: rgba(15,23,42,0.10);
+      --text: #0F172A;
+      --text-dim: #4B5878;
+      --text-faint: #8791AB;
+      --blue-dim: rgba(77,114,255,0.08);
+      --gold-dim: rgba(217,180,20,0.10);
+      --green-dim: rgba(22,163,74,0.08);
+      --amber-dim: rgba(217,119,6,0.08);
+      --red-dim: rgba(220,38,38,0.08);
+    }
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 90% 40% at 50% 0%, rgba(77,114,255,0.14) 0%, transparent 60%);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.55;
+    padding: 56px 20px 100px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  ::selection { background: var(--blue); color:#fff; }
+  a { color: var(--blue); }
+  strong { font-weight: 700; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  .badge-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+  .badge {
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    padding:5px 12px; border-radius:999px;
+    background: var(--blue-dim); border:1px solid var(--blue-border); color: var(--blue);
+  }
+  .badge.date { background:none; border:1px solid var(--border); color:var(--text-dim); }
+  h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+  h1 .accent { color: var(--blue); }
+  .lede {
+    font-size: 16px;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin-bottom: 40px;
+    text-wrap: balance;
+  }
+
+  .score-grid {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 52px;
+  }
+  .score-box {
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-md);
+    padding: 18px 18px 16px;
+    border-top: 3px solid var(--tone, var(--blue));
+  }
+  .score-box .label { font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:8px; }
+  .score-box .value { font-size:30px; font-weight:800; color:var(--tone, var(--blue)); font-variant-numeric:tabular-nums; }
+  .score-box .tag { font-size:12px; color: var(--text-dim); margin-top:4px; }
+
+  section { margin-bottom: 56px; }
+  .section-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom: 18px; border-bottom:1px solid var(--border); padding-bottom:12px; }
+  .section-head h2 { font-size: 13px; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color: var(--text); }
+  .section-head .tagline { font-size:12px; color: var(--text-faint); font-weight:600; white-space:nowrap; }
+
+  p.intro { color: var(--text-dim); font-size:14.5px; margin-bottom:20px; max-width:700px; }
+
+  .findings { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .findings.single { grid-template-columns: 1fr; }
+  @media (max-width: 640px) { .findings { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-md);
+    padding: 16px 18px; border-left: 3px solid var(--tone, var(--text-faint));
+    display:flex; gap:12px;
+  }
+  .card .mark {
+    font-size:13px; font-weight:800; color: var(--tone, var(--text-faint));
+    width:18px; flex-shrink:0; padding-top:1px;
+  }
+  .card .body h3 { font-size:14px; font-weight:700; margin-bottom:5px; }
+  .card .body p { font-size:13px; color: var(--text-dim); line-height:1.5; }
+  .card .body .cite { display:block; margin-top:7px; font-family:var(--mono); font-size:11px; color:var(--text-faint); }
+  .card.done   { --tone: var(--green); }
+  .card.risk   { --tone: var(--red); }
+  .card.watch  { --tone: var(--amber); }
+  .card.info   { --tone: var(--blue); }
+
+  .pill {
+    display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase;
+    padding:2px 7px; border-radius:5px; margin-left:8px; vertical-align:middle;
+  }
+  .pill.critique { background: var(--red-dim); color: var(--red); }
+  .pill.priorite { background: var(--amber-dim); color: var(--amber); }
+  .pill.resolu   { background: var(--green-dim); color: var(--green); }
+
+  .changelog { display:flex; flex-direction:column; gap:10px; }
+  .changelog-item {
+    display:flex; gap:14px; align-items:flex-start;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:13px 16px;
+  }
+  .changelog-item .check { color: var(--green); font-size:15px; flex-shrink:0; padding-top:1px; }
+  .changelog-item .txt { font-size:13.5px; color: var(--text-dim); line-height:1.5; }
+  .changelog-item .txt strong { color: var(--text); }
+
+  .roadmap-phase { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:14px; }
+  .roadmap-phase .phase-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .roadmap-phase .phase-tag { font-size:10.5px; font-weight:800; letter-spacing:0.06em; padding:3px 9px; border-radius:5px; }
+  .roadmap-phase.next .phase-tag { background:var(--gold-dim); color:var(--gold); }
+  .roadmap-phase.later .phase-tag { background:var(--blue-dim); color:var(--blue); }
+  .roadmap-phase .phase-title { font-size:15px; font-weight:700; }
+  .roadmap-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .roadmap-list li { font-size:13.5px; color:var(--text-dim); padding-left:18px; position:relative; }
+  .roadmap-list li::before { content:"—"; position:absolute; left:0; color:var(--text-faint); }
+  .roadmap-list li strong { color:var(--text); }
+
+  .verdict {
+    background: linear-gradient(180deg, var(--surface), var(--elevated));
+    border:1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 30px 32px;
+  }
+  .verdict h2 { font-size:16px; font-weight:800; margin-bottom:14px; }
+  .verdict p { font-size:14.5px; color:var(--text-dim); margin-bottom:12px; }
+  .verdict p:last-child { margin-bottom:0; }
+  .verdict strong { color: var(--text); }
+
+  footer { text-align:center; margin-top:60px; font-size:12px; color:var(--text-faint); }
+</style>
+
+<div class="wrap">
+
+  <div class="badge-row">
+    <span class="badge">Audit Site</span>
+    <span class="badge date">Août 2026 · www.tapitrade.com</span>
+  </div>
+  <h1>TapiTrade<span class="accent">.com</span> — Page principale</h1>
+  <p class="lede">Contenu, technique, tracking et accessibilité de la page d'entrée du funnel — hub qui redistribue vers Budget, Simulateur et Analytics.</p>
+
+  <div class="score-grid">
+    <div class="score-box" style="--tone:var(--green)">
+      <div class="label">Produit</div>
+      <div class="value">8.0</div>
+      <div class="tag">Mission/Fondateur réécrits aujourd'hui, 2 incohérences de contenu restantes</div>
+    </div>
+    <div class="score-box" style="--tone:var(--green)">
+      <div class="label">UX / Design</div>
+      <div class="value">8.3</div>
+      <div class="tag">Nav resserrée, mobile vérifié fonctionnel, quelques nits a11y</div>
+    </div>
+    <div class="score-box" style="--tone:var(--amber)">
+      <div class="label">Technique</div>
+      <div class="value">6.5</div>
+      <div class="tag">~4,3 Mo d'images non optimisées, tiré vers le bas par ce seul point</div>
+    </div>
+    <div class="score-box" style="--tone:var(--amber)">
+      <div class="label">Business</div>
+      <div class="value">5.8</div>
+      <div class="tag">Zéro tracking d'événement sur les CTA de la page hub du funnel</div>
+    </div>
+  </div>
+
+  <!-- ── Fait aujourd'hui ── -->
+  <section>
+    <div class="section-head"><h2>Fait aujourd'hui (01/08)</h2><span class="tagline">changements déjà en ligne</span></div>
+    <div class="changelog">
+      <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Mission et Fondateur réécrits</strong> — la citation Mission répétait quasiment le H1 juste au-dessus ; remplacée, avec la bio Fondateur, par la vraie histoire (entrepreneuriat classique → marchés financiers comme levier compatible famille + emploi à temps plein, résident en Allemagne, entrepreneur depuis les années 2010).</span></div>
+      <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Communauté précisée</strong> — "une communauté active" devient "une communauté active de partage et d'échange sur Discord" dans la bio Fondateur.</span></div>
+      <div class="changelog-item"><span class="check">✓</span><span class="txt"><strong>Espacement nav desktop resserré</strong> — <code>space-between</code> laissait un grand vide entre le logo et "Mission" ; passé en <code>flex-start</code> + gap fixe, avec le trio Budget/Simulateur/Analytics poussé à droite via <code>margin-left:auto</code>. Comportement mobile (logo gauche / hamburger droite) préservé et vérifié.</span></div>
+    </div>
+  </section>
+
+  <!-- ── Technique ── -->
+  <section>
+    <div class="section-head"><h2>Technique</h2><span class="tagline">performance, robustesse, SEO</span></div>
+    <div class="findings">
+      <div class="card watch"><span class="mark">!</span><div class="body"><h3>Images ~20-40x plus lourdes que nécessaire</h3><p><code>Photo-1.png</code> (2,2 Mo, 1024×1536px) affichée en 340×340px, et <code>Logo-TapiTrade-no-Backgroung.png</code> (2,1 Mo, 1536×1024px) affiché à 96px de hauteur dans le header. ~4,3 Mo à eux deux pour des éléments visuellement petits — le plus gros poste de poids de page, avec impact direct sur le LCP mobile. Un JPEG/WebP à la bonne résolution ramènerait chacun à quelques dizaines de Ko ; le logo est même un bon candidat SVG.</p><span class="cite">assets/Photo-1.png, assets/Logo-TapiTrade-no-Backgroung.png</span></div></div>
+      <div class="card info"><span class="mark">i</span><div class="body"><h3>Contenu 100% dépendant du JS pour être visible</h3><p>Chaque section utilise <code>.reveal { opacity:0 }</code>, levé uniquement par un IntersectionObserver JS, sans repli CSS/noscript. Vérifié avec un scroll réel simulé (Playwright) : tout s'affiche correctement pour un visiteur normal — donc pas un bug aujourd'hui, juste une fragilité si le JS venait à échouer.</p></div></div>
+      <div class="card done"><span class="mark">+</span><div class="body"><h3>Tous les liens externes vérifiés en direct <span class="pill resolu">Résolu</span></h3><p>JotForm Masterclass, JotForm Workshop, Discord, Facebook, YouTube — les 5 renvoient 200 OK. Aucun lien mort.</p></div></div>
+      <div class="card done"><span class="mark">+</span><div class="body"><h3>SEO de base solide</h3><p>Title/description/canonical/OG/Twitter Card présents et cohérents, <code>robots.txt</code> + <code>sitemap.xml</code> en place, <code>google-site-verification</code> posé, <code>lang="fr"</code> sur le <code>&lt;html&gt;</code>.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ── Business / Tracking ── -->
+  <section>
+    <div class="section-head"><h2>Business & Tracking</h2><span class="tagline">visibilité sur le funnel</span></div>
+    <div class="findings">
+      <div class="card watch"><span class="mark">!</span><div class="body"><h3>Zéro tracking d'événement sur la page la plus stratégique</h3><p>Plausible ne trace ici que les pageviews automatiques. Aucun événement sur "Réserve ta place" (Masterclass), "Je suis intéressé(e)" (Workshop), "Rejoins DISCORD", les 2 boutons WhatsApp, ni les cartes YouTube/Discord/Facebook. Contrairement à <code>budget.html</code> qui trace déjà <code>Diagnostic Shown</code>/<code>CTA Click</code> avec tier — cette page hub, elle, n'a aucune visibilité sur ce qui convertit réellement.</p></div></div>
+      <div class="card info"><span class="mark">i</span><div class="body"><h3>Deux CTA WhatsApp, deux messages pré-remplis différents</h3><p>Le bouton flottant ("plus d'informations") et celui de la section CTA ("échange gratuit de 15 min") partent vers le même numéro sans distinction de source une fois dans la conversation — et sans tracking Plausible non plus (cf. finding ci-dessus) pour savoir lequel a été cliqué.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ── Contenu ── -->
+  <section>
+    <div class="section-head"><h2>Contenu</h2><span class="tagline">cohérence texte</span></div>
+    <div class="findings">
+      <div class="card watch"><span class="mark">!</span><div class="body"><h3>Témoignage en décalage avec l'offre actuelle</h3><p>Le témoignage d'OlliV. mentionne "les 3 Workshops (Intro, Tech et Leaps)", alors que la section Annonces n'affiche plus qu'un seul Workshop unifié (5-6 semaines). Un prospect qui lit les deux peut se demander si 3 formations séparées existent encore.</p><span class="cite">index.html — témoignage OlliV., section #testimonials</span></div></div>
+      <div class="card info"><span class="mark">i</span><div class="body"><h3>"Christian" cité sans être introduit ailleurs</h3><p>Le témoignage d'Estelle C. remercie "Christian" nommément, mais aucune autre section du site ne le présente. Un visiteur qui découvre TapiTrade pour la première fois ne sait pas qui c'est.</p><span class="cite">index.html — témoignage Estelle C.</span></div></div>
+    </div>
+  </section>
+
+  <!-- ── Accessibilité ── -->
+  <section>
+    <div class="section-head"><h2>Accessibilité</h2><span class="tagline">mineur</span></div>
+    <div class="findings single">
+      <div class="card info"><span class="mark">i</span><div class="body"><h3>Icônes sociales du footer identifiées par <code>title</code> seul</h3><p>Les liens YouTube/Discord/Facebook/Email du footer (<code>class="soc"</code>) n'ont qu'un attribut <code>title</code>, pas fiable au clavier, au lecteur d'écran ni au tactile mobile. Un <code>aria-label</code> en plus serait plus robuste — mineur, n'empêche pas l'usage.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ── Roadmap ── -->
+  <section>
+    <div class="section-head"><h2>Roadmap</h2><span class="tagline">par ordre d'impact</span></div>
+    <div class="roadmap-phase next">
+      <div class="phase-head"><span class="phase-tag">Prioritaire</span><span class="phase-title">Impact direct, effort faible</span></div>
+      <ul class="roadmap-list">
+        <li><strong>Compresser/reconvertir <code>Photo-1.png</code> et le logo</strong> — JPEG/WebP à la résolution d'affichage réelle (340px et 96px), ou SVG pour le logo. Gain de ~4 Mo attendu, quelques minutes de travail.</li>
+        <li><strong>Ajouter des événements Plausible sur les CTA clés</strong> — Masterclass, Workshop, Zoom mensuel, WhatsApp (×2, avec une prop pour distinguer les deux), YouTube/Discord/Facebook. Même mécanique que <code>budget.html</code>, à répliquer ici.</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase later">
+      <div class="phase-head"><span class="phase-tag">Ensuite</span><span class="phase-title">Cohérence de contenu, mineur</span></div>
+      <ul class="roadmap-list">
+        <li><strong>Clarifier ou retirer</strong> la mention "3 Workshops" dans le témoignage d'OlliV. si le programme est désormais unifié.</li>
+        <li><strong>Nommer Christian</strong> quelque part sur le site (équipe, workshop) si c'est un membre actif, sinon envisager de retirer la mention du témoignage.</li>
+        <li><strong><code>aria-label</code></strong> sur les icônes sociales du footer, en plus de <code>title</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Verdict ── -->
+  <div class="verdict">
+    <h2>Verdict</h2>
+    <p>La page fait bien son travail de vitrine : identité visuelle cohérente, histoire personnelle authentique désormais mise en avant (corrigée aujourd'hui), aucun lien mort, base SEO propre. <strong>Le vrai point faible n'est pas visible à l'œil</strong> — c'est le poids des deux images (~4,3 Mo à elles seules) et l'absence totale de tracking d'événement sur une page qui est justement le point d'entrée de tout le funnel TapiTrade.</p>
+    <p>Les deux corrections prioritaires (compression d'images, événements Plausible) sont rapides et changent directement soit l'expérience mobile, soit la capacité de Dany à savoir ce qui convertit réellement sur cette page — contrairement à <code>budget.html</code>, qui a déjà les deux.</p>
+  </div>
+
+  <footer>TapiTrade — Audit page principale — 01/08/2026</footer>
+
+</div>
