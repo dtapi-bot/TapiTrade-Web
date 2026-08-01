@@ -196,6 +196,15 @@
   .savings-card.warn.amber .sc-value { color: var(--amber); }
   .savings-card .sc-note { font-size: 12.5px; color: var(--text); margin-top: 10px; line-height: 1.5; }
 
+  .sim-cta-btn {
+    display: none; margin-top: 14px; width: 100%; box-sizing: border-box; text-align: center;
+    background: var(--brand); color: #fff; text-decoration: none;
+    font-size: 13.5px; font-weight: 600; padding: 12px 18px; border-radius: var(--radius-md);
+    transition: opacity 0.15s;
+  }
+  .sim-cta-btn.show { display: block; }
+  .sim-cta-btn:hover { opacity: 0.88; }
+
   .cta-card {
     margin-top: 14px; border-radius: var(--radius-md); padding: 18px 20px;
     background: var(--gold-dim); border: 1px solid rgba(254,239,119,0.35);
@@ -362,6 +371,8 @@
         <div class="sc-note" id="savingsNote">Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.</div>
       </div>
 
+      <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="sim-cta-btn" id="simCtaBtn">📈 Simule ce que ça représente sur le long terme →</a>
+
       <div class="cta-card" id="ctaCard">
         <div class="cta-text" id="ctaText"></div>
         <a href="index.html#offers" class="cta-btn" id="ctaBtn">Découvrir la Masterclass gratuite →</a>
@@ -491,6 +502,18 @@ function calc() {
   const ctaCard = document.getElementById('ctaCard');
   const ctaText = document.getElementById('ctaText');
   const ctaBtn = document.getElementById('ctaBtn');
+
+  // Des que l'utilisateur a identifie sa capacite d'epargne, on le conduit
+  // vers le Simulateur pour visualiser ce que ce montant peut representer
+  // sur le long terme — etape 2 du funnel educatif (voir Budget -> Simulateur
+  // -> Analytics), independamment du tier (budget qui tient ou pas).
+  const simCtaBtn = document.getElementById('simCtaBtn');
+  if (epargne > 0) {
+    simCtaBtn.href = 'https://analytics.tapitrade.com/simulateur.html?montant=' + Math.round(epargne);
+    simCtaBtn.classList.add('show');
+  } else {
+    simCtaBtn.classList.remove('show');
+  }
 
   if (salaire <= 0) {
     savingsValue.textContent = '—';
