@@ -77,6 +77,23 @@
   .site-header-nav a:hover { color: var(--text); }
   .nav-arrow { display: inline; }
 
+  /* ── Selecteur de langue (page autonome, pas de menu compte ici) ── */
+  .lang-switch {
+    display: flex; align-items: center; gap: 2px;
+    background: var(--elevated); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 2px;
+  }
+  .lang-switch button {
+    border: none; background: transparent; color: var(--text-dim);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+    padding: 4px 9px; border-radius: 4px; cursor: pointer;
+    transition: background 0.15s, color 0.15s; font-family: var(--font);
+  }
+  .lang-switch button:hover { color: var(--text); }
+  .lang-switch button.active { background: var(--brand); color: #fff; }
+
+  .hidden { display: none !important; }
+
   /* ── Footer fixe ─────────────────────────────────────── */
   .app-footer {
     position: fixed; bottom: 0; left: 0; right: 0;
@@ -268,114 +285,118 @@
     <nav class="site-header-nav">
       <a href="index.html">← TapiTrade</a>
       <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer">Simulateur<span class="nav-arrow"> →</span></a>
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang-btn="fr">FR</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
 <div class="wrap">
 
-  <span class="tag">Outil gratuit · Aucune donnée enregistrée</span>
+  <span class="tag" data-i18n="tag">Outil gratuit · Aucune donnée enregistrée</span>
 
-  <h1>Est-ce que tu te <span class="g">payes en premier</span> ?</h1>
-  <p class="sub">La plupart des gens épargnent ce qu'il reste à la fin du mois — <span class="g">souvent rien</span>.<br>Entre tes chiffres, paye-toi et découvre en 30 secondes si tu as une discipline financière qui soutient l'investissement et la création de patrimoine.</p>
+  <h1 data-i18n="h1" data-i18n-html>Est-ce que tu te <span class="g">payes en premier</span> ?</h1>
+  <p class="sub" data-i18n="sub" data-i18n-html>La plupart des gens épargnent ce qu'il reste à la fin du mois — <span class="g">souvent rien</span>.<br>Entre tes chiffres, paye-toi et découvre en 30 secondes si tu as une discipline financière qui soutient l'investissement et la création de patrimoine.</p>
 
   <div class="layout">
 
     <!-- LEFT: reference grid -->
     <div class="panel">
-      <div class="panel-title">Répartition de référence</div>
+      <div class="panel-title" data-i18n="ref_title">Répartition de référence</div>
       <div class="ref-row highlight">
-        <div class="ref-label"><span class="emoji">💰</span>Épargne & Investissement</div>
+        <div class="ref-label"><span class="emoji">💰</span><span data-i18n="cat_epargne">Épargne & Investissement</span></div>
         <div class="ref-pct">15–20%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🏠</span>Logement</div>
+        <div class="ref-label"><span class="emoji">🏠</span><span data-i18n="cat_logement">Logement</span></div>
         <div class="ref-pct">25–30%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🍽️</span>Alimentation</div>
+        <div class="ref-label"><span class="emoji">🍽️</span><span data-i18n="cat_alimentation">Alimentation</span></div>
         <div class="ref-pct">10–15%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🚗</span>Transport</div>
+        <div class="ref-label"><span class="emoji">🚗</span><span data-i18n="cat_transport">Transport</span></div>
         <div class="ref-pct">5–10%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🚙</span>Véhicules</div>
+        <div class="ref-label"><span class="emoji">🚙</span><span data-i18n="cat_vehicules">Véhicules</span></div>
         <div class="ref-pct">5–10%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🏥</span>Assurances & Santé</div>
+        <div class="ref-label"><span class="emoji">🏥</span><span data-i18n="cat_assurances">Assurances & Santé</span></div>
         <div class="ref-pct">5–8%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🎉</span>Loisirs & Sorties</div>
+        <div class="ref-label"><span class="emoji">🎉</span><span data-i18n="cat_loisirs">Loisirs & Sorties</span></div>
         <div class="ref-pct">5–10%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">📱</span>Abonnements & Télécom</div>
+        <div class="ref-label"><span class="emoji">📱</span><span data-i18n="cat_abonnements">Abonnements & Télécom</span></div>
         <div class="ref-pct">3–5%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">🎲</span>Divers</div>
+        <div class="ref-label"><span class="emoji">🎲</span><span data-i18n="cat_divers">Divers</span></div>
         <div class="ref-pct">3–5%</div>
       </div>
       <div class="ref-row">
-        <div class="ref-label"><span class="emoji">⚠️</span>Imprévus</div>
+        <div class="ref-label"><span class="emoji">⚠️</span><span data-i18n="cat_imprevus">Imprévus</span></div>
         <div class="ref-pct">5–7%</div>
       </div>
-      <div class="ref-note">Repères indicatifs pour un budget équilibré. Le premier bloc — l'épargne — doit être réservé avant tout le reste, pas ce qu'il reste à la fin du mois.</div>
+      <div class="ref-note" data-i18n="ref_note">Repères indicatifs pour un budget équilibré. Le premier bloc — l'épargne — doit être réservé avant tout le reste, pas ce qu'il reste à la fin du mois.</div>
     </div>
 
     <!-- CENTER: inputs -->
     <div class="panel">
-      <div class="panel-title">Tes chiffres</div>
+      <div class="panel-title" data-i18n="chiffres_title">Tes chiffres</div>
 
       <div class="salary-field">
-        <label for="salaire">Salaire net mensuel</label>
+        <label for="salaire" data-i18n="salaire_label">Salaire net mensuel</label>
         <div class="salary-input-row">
-          <input type="number" id="salaire" min="0" step="10" placeholder="ex: 2500" inputmode="decimal">
+          <input type="number" id="salaire" min="0" step="10" placeholder="ex: 2500" inputmode="decimal" data-i18n="salaire_placeholder" data-i18n-placeholder>
           <span class="suffix">€</span>
         </div>
       </div>
 
       <div class="salary-field">
         <label for="in-epargne" class="epargne-label" style="color: var(--gold);">
-          <span>1. 💰 Épargne & Investissement — se payer en premier</span>
+          <span data-i18n="epargne_label">1. 💰 Épargne & Investissement — se payer en premier</span>
           <span class="target-badge gold" id="target-epargne"></span>
         </label>
         <div class="salary-input-row epargne-input-row">
-          <input type="number" id="in-epargne" min="0" step="5" placeholder="ex: 400" inputmode="decimal">
+          <input type="number" id="in-epargne" min="0" step="5" placeholder="ex: 400" inputmode="decimal" data-i18n="epargne_placeholder" data-i18n-placeholder>
           <span class="suffix">€</span>
         </div>
       </div>
 
-      <div class="panel-title" style="margin-top:20px;">2. Le reste de ton budget</div>
+      <div class="panel-title" style="margin-top:20px;" data-i18n="reste_title">2. Le reste de ton budget</div>
       <div id="catInputs"></div>
     </div>
 
     <!-- RIGHT: results -->
     <div class="panel">
-      <div class="panel-title">Ta répartition réelle</div>
+      <div class="panel-title" data-i18n="repartition_title">Ta répartition réelle</div>
 
       <div class="result-row" id="epargneResultRow">
-        <div class="result-cat" style="color: var(--gold);">💰 Épargne & Investissement</div>
+        <div class="result-cat" style="color: var(--gold);">💰 <span data-i18n="cat_epargne">Épargne & Investissement</span></div>
         <div class="result-pct neutral" id="pct-epargne">—</div>
       </div>
       <div id="resultRows"></div>
 
       <div class="total-bar">
-        <div class="tb-head"><span>Total (épargne + dépenses) saisi</span><span id="totalPct">0%</span></div>
+        <div class="tb-head"><span data-i18n="total_label">Total (épargne + dépenses) saisi</span><span id="totalPct">0%</span></div>
         <div class="tb-track"><div class="tb-fill" id="totalFill" style="width:0%;"></div></div>
       </div>
 
       <div class="savings-card ok" id="savingsCard">
-        <div class="sc-label">Ton budget tient-il ?</div>
+        <div class="sc-label" data-i18n="sc_label">Ton budget tient-il ?</div>
         <div class="sc-value" id="savingsValue">—</div>
-        <div class="sc-note" id="savingsNote">Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.</div>
+        <div class="sc-note" id="savingsNote" data-i18n="sc_note_default">Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.</div>
       </div>
 
-      <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="sim-cta-btn" id="simCtaBtn">📈 Simule ce que ça représente sur le long terme →</a>
+      <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="sim-cta-btn" id="simCtaBtn" data-i18n="sim_cta">📈 Simule ce que ça représente sur le long terme →</a>
 
       <div class="cta-card" id="ctaCard">
         <div class="cta-text" id="ctaText"></div>
@@ -389,20 +410,158 @@
 <footer class="app-footer">
   <span><strong>TapiTrade</strong> <span class="footer-accent">Budget</span></span>
   <span class="footer-sep">·</span>
-  <span>Discipline financière</span>
+  <span data-i18n="footer_tagline">Discipline financière</span>
 </footer>
 
 <script>
+/* ── i18n autonome (page independante, pas de dependance a Stock-Analysis) ── */
+const I18N = {
+  fr: {
+    tag: "Outil gratuit · Aucune donnée enregistrée",
+    h1: 'Est-ce que tu te <span class="g">payes en premier</span> ?',
+    sub: "La plupart des gens épargnent ce qu'il reste à la fin du mois — <span class=\"g\">souvent rien</span>.<br>Entre tes chiffres, paye-toi et découvre en 30 secondes si tu as une discipline financière qui soutient l'investissement et la création de patrimoine.",
+    ref_title: "Répartition de référence",
+    cat_epargne: "Épargne & Investissement",
+    cat_logement: "Logement",
+    cat_alimentation: "Alimentation",
+    cat_transport: "Transport",
+    cat_vehicules: "Véhicules",
+    cat_assurances: "Assurances & Santé",
+    cat_loisirs: "Loisirs & Sorties",
+    cat_abonnements: "Abonnements & Télécom",
+    cat_divers: "Divers",
+    cat_imprevus: "Imprévus",
+    ref_note: "Repères indicatifs pour un budget équilibré. Le premier bloc — l'épargne — doit être réservé avant tout le reste, pas ce qu'il reste à la fin du mois.",
+    chiffres_title: "Tes chiffres",
+    salaire_label: "Salaire net mensuel",
+    salaire_placeholder: "ex: 2500",
+    epargne_label: "1. 💰 Épargne & Investissement — se payer en premier",
+    epargne_placeholder: "ex: 400",
+    reste_title: "2. Le reste de ton budget",
+    repartition_title: "Ta répartition réelle",
+    total_label: "Total (épargne + dépenses) saisi",
+    sc_label: "Ton budget tient-il ?",
+    sc_note_default: "Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.",
+    sim_cta: "📈 Simule ce que ça représente sur le long terme →",
+    footer_tagline: "Discipline financière",
+    target_objectif: "objectif",
+    target_max: "max",
+    de_marge: " de marge",
+    pct_epargnes: "% épargnés",
+    zero_mis_de_cote: "0 € mis de côté",
+    green_note: (pct, atteintObjectif, reste) =>
+      `Tu te payes en premier (${pct}%${atteintObjectif ? ", au-dessus de l'objectif de 20%" : ""}), et ton budget tient : il te reste encore ${reste} après toutes tes dépenses.`,
+    yellow_note_a: (pct, depasse) =>
+      `Ton épargne (${pct}%) est correcte, mais même après l'avoir mise de côté, tes dépenses dépassent ce qu'il te reste de ${depasse}. Ton budget ne suit pas encore.`,
+    yellow_note_b: (pct) =>
+      `Tu épargnes ${pct}% — un bon début, mais encore en dessous du minimum recommandé de 15%. Continue à ajuster ton budget.`,
+    red_note_zero: (min, target) =>
+      `Commence par le point 1 : combien te payes-tu en premier, avant toute autre dépense ? Vise 15-20% de ton salaire (${min} à ${target}).`,
+    red_note_nonzero: (pct, manque) =>
+      `Ton épargne (${pct}%) est largement en dessous du minimum recommandé de 15% — il manque ${manque} pour l'atteindre.`,
+    cta_green: "Ta discipline financière est solide — tu es prêt(e) à structurer un vrai plan d'investissement. Le Workshop TapiTrade t'accompagne pour investir avec méthode et conviction.",
+    cta_yellow: "Tu as déjà de bons réflexes, mais pas encore une discipline assez solide pour investir sereinement sur le long terme. La Masterclass gratuite TapiTrade t'aide à structurer tes finances avant d'investir.",
+    cta_red: "Tu n'as pas encore de discipline d'épargne — c'est le point de départ de tout investissement. La Masterclass gratuite TapiTrade t'aide à comprendre pourquoi et comment commencer.",
+    cta_btn_workshop: "Découvrir le Workshop →",
+    cta_btn_masterclass: "Découvrir la Masterclass gratuite →",
+  },
+  en: {
+    tag: "Free tool · No data stored",
+    h1: 'Do you <span class="g">pay yourself first</span>?',
+    sub: "Most people save whatever's left at the end of the month — <span class=\"g\">often nothing</span>.<br>Enter your numbers, pay yourself, and find out in 30 seconds whether your financial discipline supports investing and building wealth.",
+    ref_title: "Reference breakdown",
+    cat_epargne: "Savings & Investment",
+    cat_logement: "Housing",
+    cat_alimentation: "Food",
+    cat_transport: "Transport",
+    cat_vehicules: "Vehicles",
+    cat_assurances: "Insurance & Health",
+    cat_loisirs: "Leisure & Outings",
+    cat_abonnements: "Subscriptions & Telecom",
+    cat_divers: "Miscellaneous",
+    cat_imprevus: "Unexpected expenses",
+    ref_note: "Indicative benchmarks for a balanced budget. The first block — savings — should be set aside before everything else, not whatever's left at the end of the month.",
+    chiffres_title: "Your numbers",
+    salaire_label: "Monthly net salary",
+    salaire_placeholder: "e.g. 2500",
+    epargne_label: "1. 💰 Savings & Investment — pay yourself first",
+    epargne_placeholder: "e.g. 400",
+    reste_title: "2. The rest of your budget",
+    repartition_title: "Your actual breakdown",
+    total_label: "Total (savings + expenses) entered",
+    sc_label: "Does your budget hold up?",
+    sc_note_default: "Enter your salary, savings, and expenses to see the result.",
+    sim_cta: "📈 Simulate what this means long-term →",
+    footer_tagline: "Financial discipline",
+    target_objectif: "target",
+    target_max: "max",
+    de_marge: " left over",
+    pct_epargnes: "% saved",
+    zero_mis_de_cote: "€0 set aside",
+    green_note: (pct, atteintObjectif, reste) =>
+      `You pay yourself first (${pct}%${atteintObjectif ? ", above the 20% target" : ""}), and your budget holds up: you still have ${reste} left after all your expenses.`,
+    yellow_note_a: (pct, depasse) =>
+      `Your savings (${pct}%) are solid, but even after setting them aside, your expenses exceed what's left by ${depasse}. Your budget doesn't add up yet.`,
+    yellow_note_b: (pct) =>
+      `You're saving ${pct}% — a good start, but still below the recommended minimum of 15%. Keep adjusting your budget.`,
+    red_note_zero: (min, target) =>
+      `Start with point 1: how much do you pay yourself first, before any other expense? Aim for 15-20% of your salary (${min} to ${target}).`,
+    red_note_nonzero: (pct, manque) =>
+      `Your savings (${pct}%) are well below the recommended minimum of 15% — you need ${manque} more to reach it.`,
+    cta_green: "Your financial discipline is solid — you're ready to build a real investment plan. The English-language Workshop is coming soon — for now, sessions run in French.",
+    cta_yellow: "You already have good instincts, but not yet enough discipline to invest confidently long-term. The English-language free Masterclass is coming soon — for now, sessions run in French.",
+    cta_red: "You don't have a savings discipline yet — that's the starting point for any investing. The English-language free Masterclass is coming soon — for now, sessions run in French.",
+    cta_btn_workshop: "Discover the Workshop →",
+    cta_btn_masterclass: "Discover the free Masterclass →",
+  },
+};
+
+const LANG_KEY = "tapitrade_lang";
+function getLang() {
+  const stored = localStorage.getItem(LANG_KEY);
+  return stored === "en" ? "en" : "fr";
+}
+function t(key) { return I18N[getLang()][key]; }
+function isEn() { return getLang() === "en"; }
+function locale() { return isEn() ? "en-US" : "fr-FR"; }
+
+function applyStaticLang() {
+  const lang = getLang();
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    const text = t(key);
+    if (el.hasAttribute("data-i18n-placeholder")) el.setAttribute("placeholder", text);
+    else if (el.hasAttribute("data-i18n-html")) el.innerHTML = text;
+    else el.textContent = text;
+  });
+  document.querySelectorAll("[data-lang-btn]").forEach(btn => {
+    btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
+  });
+}
+
+function setLang(lang) {
+  localStorage.setItem(LANG_KEY, lang);
+  applyStaticLang();
+  buildCategoryRows();
+  calc();
+}
+
+document.querySelectorAll("[data-lang-btn]").forEach(btn => {
+  btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang-btn")));
+});
+
+/* ── Config ─────────────────────────────────────────── */
 const CATEGORIES = [
-  { key: "logement",   label: "Logement",              emoji: "🏠", min: 25, max: 30 },
-  { key: "alimentation", label: "Alimentation",        emoji: "🍽️", min: 10, max: 15 },
-  { key: "transport",  label: "Transport",              emoji: "🚗", min: 5,  max: 10 },
-  { key: "vehicules",  label: "Véhicules",              emoji: "🚙", min: 5,  max: 10 },
-  { key: "assurances", label: "Assurances & Santé",     emoji: "🏥", min: 5,  max: 8  },
-  { key: "loisirs",    label: "Loisirs & Sorties",      emoji: "🎉", min: 5,  max: 10 },
-  { key: "abonnements",label: "Abonnements & Télécom",  emoji: "📱", min: 3,  max: 5  },
-  { key: "divers",     label: "Divers",                 emoji: "🎲", min: 3,  max: 5  },
-  { key: "imprevus",   label: "Imprévus",               emoji: "⚠️", min: 5,  max: 7  },
+  { key: "logement",    i18nKey: "cat_logement",     emoji: "🏠", min: 25, max: 30 },
+  { key: "alimentation", i18nKey: "cat_alimentation", emoji: "🍽️", min: 10, max: 15 },
+  { key: "transport",   i18nKey: "cat_transport",     emoji: "🚗", min: 5,  max: 10 },
+  { key: "vehicules",   i18nKey: "cat_vehicules",     emoji: "🚙", min: 5,  max: 10 },
+  { key: "assurances",  i18nKey: "cat_assurances",    emoji: "🏥", min: 5,  max: 8  },
+  { key: "loisirs",     i18nKey: "cat_loisirs",       emoji: "🎉", min: 5,  max: 10 },
+  { key: "abonnements", i18nKey: "cat_abonnements",   emoji: "📱", min: 3,  max: 5  },
+  { key: "divers",      i18nKey: "cat_divers",        emoji: "🎲", min: 3,  max: 5  },
+  { key: "imprevus",    i18nKey: "cat_imprevus",      emoji: "⚠️", min: 5,  max: 7  },
 ];
 
 const SAVINGS_MIN = 15;
@@ -413,32 +572,49 @@ const resultRowsEl = document.getElementById('resultRows');
 const salaireEl = document.getElementById('salaire');
 let lastTier = null;
 
-CATEGORIES.forEach(cat => {
-  const row = document.createElement('div');
-  row.className = 'cat-row';
-  row.innerHTML = `
-    <div class="cat-label">
-      <span class="cat-label-left"><span class="emoji">${cat.emoji}</span><span>${cat.label}</span></span>
-      <span class="target-badge" id="target-${cat.key}"></span>
-    </div>
-    <div class="cat-input-row">
-      <input type="number" min="0" step="5" inputmode="decimal" id="in-${cat.key}" placeholder="0" aria-label="${cat.label}">
-      <span class="suffix">€</span>
-    </div>`;
-  catInputsEl.appendChild(row);
-});
+// Reconstruit les lignes generees en JS (categories) au changement de langue —
+// plus simple que de traduire chaque noeud individuellement, et preserve les
+// valeurs deja saisies (relues/reappliquees juste apres).
+function buildCategoryRows() {
+  const previousValues = {};
+  CATEGORIES.forEach(cat => {
+    const existing = document.getElementById(`in-${cat.key}`);
+    if (existing) previousValues[cat.key] = existing.value;
+  });
 
-CATEGORIES.forEach(cat => {
-  const row = document.createElement('div');
-  row.className = 'result-row';
-  row.innerHTML = `
-    <div class="result-cat">${cat.emoji} ${cat.label}</div>
-    <div class="result-pct neutral" id="pct-${cat.key}">—</div>`;
-  resultRowsEl.appendChild(row);
-});
+  catInputsEl.innerHTML = '';
+  resultRowsEl.innerHTML = '';
+
+  CATEGORIES.forEach(cat => {
+    const label = t(cat.i18nKey);
+    const row = document.createElement('div');
+    row.className = 'cat-row';
+    row.innerHTML = `
+      <div class="cat-label">
+        <span class="cat-label-left"><span class="emoji">${cat.emoji}</span><span>${label}</span></span>
+        <span class="target-badge" id="target-${cat.key}"></span>
+      </div>
+      <div class="cat-input-row">
+        <input type="number" min="0" step="5" inputmode="decimal" id="in-${cat.key}" placeholder="0" aria-label="${label}">
+        <span class="suffix">€</span>
+      </div>`;
+    catInputsEl.appendChild(row);
+    if (previousValues[cat.key]) document.getElementById(`in-${cat.key}`).value = previousValues[cat.key];
+    document.getElementById(`in-${cat.key}`).addEventListener('input', calc);
+  });
+
+  CATEGORIES.forEach(cat => {
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `
+      <div class="result-cat">${cat.emoji} ${t(cat.i18nKey)}</div>
+      <div class="result-pct neutral" id="pct-${cat.key}">—</div>`;
+    resultRowsEl.appendChild(row);
+  });
+}
 
 function fmtEuro(n) {
-  return n.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' €';
+  return n.toLocaleString(locale(), { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' €';
 }
 
 function calc() {
@@ -447,16 +623,19 @@ function calc() {
 
   const epargneTargetEl = document.getElementById('target-epargne');
   epargneTargetEl.textContent = salaire > 0
-    ? `objectif ${fmtEuro(salaire * SAVINGS_MIN / 100)}–${fmtEuro(salaire * SAVINGS_TARGET / 100)}`
+    ? `${t('target_objectif')} ${fmtEuro(salaire * SAVINGS_MIN / 100)}–${fmtEuro(salaire * SAVINGS_TARGET / 100)}`
     : '';
 
   CATEGORIES.forEach(cat => {
     const targetEl = document.getElementById(`target-${cat.key}`);
-    targetEl.textContent = salaire > 0 ? `max ${fmtEuro(salaire * cat.max / 100)}` : '';
+    if (!targetEl) return;
+    targetEl.textContent = salaire > 0 ? `${t('target_max')} ${fmtEuro(salaire * cat.max / 100)}` : '';
 
-    const val = parseFloat(document.getElementById(`in-${cat.key}`).value) || 0;
+    const inputEl = document.getElementById(`in-${cat.key}`);
+    const val = parseFloat(inputEl ? inputEl.value : 0) || 0;
     totalDepenses += val;
     const pctEl = document.getElementById(`pct-${cat.key}`);
+    if (!pctEl) return;
 
     if (salaire <= 0 || val === 0) {
       pctEl.textContent = '—';
@@ -513,7 +692,8 @@ function calc() {
   // -> Analytics), independamment du tier (budget qui tient ou pas).
   const simCtaBtn = document.getElementById('simCtaBtn');
   if (epargne > 0) {
-    simCtaBtn.href = 'https://analytics.tapitrade.com/simulateur.html?montant=' + Math.round(epargne);
+    const langParam = isEn() ? '&lang=en' : '';
+    simCtaBtn.href = 'https://analytics.tapitrade.com/simulateur.html?montant=' + Math.round(epargne) + langParam;
     simCtaBtn.classList.add('show');
   } else {
     simCtaBtn.classList.remove('show');
@@ -521,7 +701,7 @@ function calc() {
 
   if (salaire <= 0) {
     savingsValue.textContent = '—';
-    savingsNote.textContent = 'Renseigne ton salaire, ton épargne et tes dépenses pour voir le résultat.';
+    savingsNote.textContent = t('sc_note_default');
     savingsCard.className = 'savings-card ok';
     ctaCard.classList.remove('show');
     lastTier = null;
@@ -550,46 +730,51 @@ function calc() {
     lastTier = tier;
   }
 
+  // Le Workshop et la Masterclass n'existent pour l'instant qu'en francais
+  // (site principal non traduit) — en anglais, le CTA final annonce "coming
+  // soon" et le bouton est masque plutot que de renvoyer un visiteur
+  // anglophone vers une page francaise (meme choix que sur le Simulateur).
+  ctaBtn.classList.toggle('hidden', isEn());
+
   if (tier === 'green') {
     savingsCard.className = 'savings-card ok';
-    savingsValue.textContent = fmtEuro(reste) + ' de marge';
-    savingsNote.textContent = `Tu te payes en premier (${epargnePct.toFixed(1)}%${epargnePct >= SAVINGS_TARGET ? ', au-dessus de l\'objectif de 20%' : ''}), et ton budget tient : il te reste encore ${fmtEuro(reste)} après toutes tes dépenses.`;
-    ctaText.textContent = "Ta discipline financière est solide — tu es prêt(e) à structurer un vrai plan d'investissement. Le Workshop TapiTrade t'accompagne pour investir avec méthode et conviction.";
-    ctaBtn.textContent = 'Découvrir le Workshop →';
+    savingsValue.textContent = fmtEuro(reste) + t('de_marge');
+    savingsNote.textContent = t('green_note')(epargnePct.toFixed(1), epargnePct >= SAVINGS_TARGET, fmtEuro(reste));
+    ctaText.textContent = t('cta_green');
+    ctaBtn.textContent = t('cta_btn_workshop');
     ctaBtn.href = 'index.html#workshop-offer';
   } else if (tier === 'yellow') {
     savingsCard.className = 'savings-card warn amber';
     if (epargnePct >= SAVINGS_MIN && reste < 0) {
-      savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
-      savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est correcte, mais même après l'avoir mise de côté, tes dépenses dépassent ce qu'il te reste de ${fmtEuro(Math.abs(reste))}. Ton budget ne suit pas encore.`;
+      savingsValue.textContent = epargnePct.toFixed(1) + t('pct_epargnes');
+      savingsNote.textContent = t('yellow_note_a')(epargnePct.toFixed(1), fmtEuro(Math.abs(reste)));
     } else {
-      savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
-      savingsNote.textContent = `Tu épargnes ${epargnePct.toFixed(1)}% — un bon début, mais encore en dessous du minimum recommandé de 15%. Continue à ajuster ton budget.`;
+      savingsValue.textContent = epargnePct.toFixed(1) + t('pct_epargnes');
+      savingsNote.textContent = t('yellow_note_b')(epargnePct.toFixed(1));
     }
-    ctaText.textContent = "Tu as déjà de bons réflexes, mais pas encore une discipline assez solide pour investir sereinement sur le long terme. La Masterclass gratuite TapiTrade t'aide à structurer tes finances avant d'investir.";
-    ctaBtn.textContent = 'Découvrir la Masterclass gratuite →';
+    ctaText.textContent = t('cta_yellow');
+    ctaBtn.textContent = t('cta_btn_masterclass');
     ctaBtn.href = 'index.html#masterclass-offer';
   } else {
     savingsCard.className = 'savings-card warn';
     if (epargne === 0) {
-      savingsValue.textContent = '0 € mis de côté';
-      savingsNote.textContent = `Commence par le point 1 : combien te payes-tu en premier, avant toute autre dépense ? Vise 15-20% de ton salaire (${fmtEuro(salaire * SAVINGS_MIN / 100)} à ${fmtEuro(salaire * SAVINGS_TARGET / 100)}).`;
+      savingsValue.textContent = t('zero_mis_de_cote');
+      savingsNote.textContent = t('red_note_zero')(fmtEuro(salaire * SAVINGS_MIN / 100), fmtEuro(salaire * SAVINGS_TARGET / 100));
     } else {
-      savingsValue.textContent = epargnePct.toFixed(1) + '% épargnés';
+      savingsValue.textContent = epargnePct.toFixed(1) + t('pct_epargnes');
       const manque = (SAVINGS_MIN / 100 * salaire) - epargne;
-      savingsNote.textContent = `Ton épargne (${epargnePct.toFixed(1)}%) est largement en dessous du minimum recommandé de 15% — il manque ${fmtEuro(manque)} pour l'atteindre.`;
+      savingsNote.textContent = t('red_note_nonzero')(epargnePct.toFixed(1), fmtEuro(manque));
     }
-    ctaText.textContent = "Tu n'as pas encore de discipline d'épargne — c'est le point de départ de tout investissement. La Masterclass gratuite TapiTrade t'aide à comprendre pourquoi et comment commencer.";
-    ctaBtn.textContent = 'Découvrir la Masterclass gratuite →';
+    ctaText.textContent = t('cta_red');
+    ctaBtn.textContent = t('cta_btn_masterclass');
     ctaBtn.href = 'index.html#masterclass-offer';
   }
 }
 
+applyStaticLang();
+buildCategoryRows();
 salaireEl.addEventListener('input', calc);
 document.getElementById('in-epargne').addEventListener('input', calc);
-CATEGORIES.forEach(cat => {
-  document.getElementById(`in-${cat.key}`).addEventListener('input', calc);
-});
 
 document.getElementById('ctaBtn').addEventListener('click', function() {
   if (typeof plausible !== 'function') return;
