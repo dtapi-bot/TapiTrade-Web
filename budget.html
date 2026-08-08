@@ -77,20 +77,31 @@
   .site-header-nav a:hover { color: var(--text); }
   .nav-arrow { display: inline; }
 
-  /* ── Selecteur de langue (page autonome, pas de menu compte ici) ── */
-  .lang-switch {
-    display: flex; align-items: center; gap: 2px;
-    background: var(--elevated); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); padding: 2px;
+  /* ── Selecteur de langue en pull-down (page autonome, pas de menu compte
+     ici) — deux boutons cote a cote cassaient l'alignement sur mobile. ── */
+  .lang-menu { position: relative; }
+  .lang-menu-btn {
+    display: flex; align-items: center; gap: 4px;
+    background: none; border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text-dim); cursor: pointer; font-family: var(--font);
+    font-size: 12.5px; font-weight: 600; padding: 5px 10px;
+    transition: color 0.15s, border-color 0.15s;
   }
-  .lang-switch button {
-    border: none; background: transparent; color: var(--text-dim);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
-    padding: 4px 9px; border-radius: 4px; cursor: pointer;
-    transition: background 0.15s, color 0.15s; font-family: var(--font);
+  .lang-menu-btn:hover { color: var(--text); border-color: var(--text-dim); }
+  .lang-menu-caret { font-size: 9px; }
+  .lang-menu-dropdown {
+    position: absolute; top: calc(100% + 8px); right: 0; min-width: 130px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-md); box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    z-index: 250; overflow: hidden;
   }
-  .lang-switch button:hover { color: var(--text); }
-  .lang-switch button.active { background: var(--brand); color: #fff; }
+  .lang-menu-dropdown button {
+    display: block; width: 100%; text-align: left; background: none; border: none;
+    color: var(--text-dim); font-family: var(--font); font-size: 13px;
+    padding: 10px 14px; cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .lang-menu-dropdown button:hover { background: var(--elevated); color: var(--text); }
+  .lang-menu-dropdown button.active { color: var(--brand); font-weight: 700; }
 
   .hidden { display: none !important; }
 
@@ -285,9 +296,15 @@
     <nav class="site-header-nav">
       <a href="index.html">← TapiTrade</a>
       <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer">Simulateur<span class="nav-arrow"> →</span></a>
-      <div class="lang-switch" role="group" aria-label="Langue / Language">
-        <button type="button" data-lang-btn="fr">FR</button>
-        <button type="button" data-lang-btn="en">EN</button>
+      <div class="lang-menu">
+        <button id="lang-menu-btn" class="lang-menu-btn" type="button" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-menu-current">FR</span>
+          <span class="lang-menu-caret">▾</span>
+        </button>
+        <div id="lang-menu-dropdown" class="lang-menu-dropdown hidden">
+          <button type="button" data-lang-btn="fr">Français</button>
+          <button type="button" data-lang-btn="en">English</button>
+        </div>
       </div>
     </nav>
   </div>
@@ -538,6 +555,7 @@ function applyStaticLang() {
   document.querySelectorAll("[data-lang-btn]").forEach(btn => {
     btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
   });
+  document.getElementById("lang-menu-current").textContent = lang.toUpperCase();
 }
 
 function setLang(lang) {
@@ -548,7 +566,32 @@ function setLang(lang) {
 }
 
 document.querySelectorAll("[data-lang-btn]").forEach(btn => {
-  btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang-btn")));
+  btn.addEventListener("click", () => {
+    setLang(btn.getAttribute("data-lang-btn"));
+    closeLangMenu();
+  });
+});
+
+/* ── Menu langue en pull-down ─────────────────────────── */
+const langMenuBtn = document.getElementById("lang-menu-btn");
+const langMenuDropdown = document.getElementById("lang-menu-dropdown");
+
+function closeLangMenu() {
+  langMenuDropdown.classList.add("hidden");
+  langMenuBtn.setAttribute("aria-expanded", "false");
+}
+
+langMenuBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const willOpen = langMenuDropdown.classList.contains("hidden");
+  langMenuDropdown.classList.toggle("hidden", !willOpen);
+  langMenuBtn.setAttribute("aria-expanded", String(willOpen));
+});
+
+document.addEventListener("click", (e) => {
+  if (!langMenuDropdown.classList.contains("hidden") && !e.target.closest(".lang-menu")) {
+    closeLangMenu();
+  }
 });
 
 /* ── Config ─────────────────────────────────────────── */
