@@ -401,6 +401,18 @@
             .stras-flyer { flex: none; width: 100%; max-width: 340px; margin: 0 auto; }
         }
 
+        /* ── Short promo MasterClass (video integree) ── */
+        .short-wrapper { margin-bottom: 64px; }
+        .short-event { display: flex; gap: 48px; align-items: center; background: var(--bg-card); border: 1px solid var(--blue-border); border-radius: 10px; padding: 36px 40px; transition: border-color 0.3s, background 0.3s; }
+        .short-event:hover { border-color: var(--blue-bright); background: var(--bg-card-h); }
+        .short-content { flex: 1; display: flex; flex-direction: column; }
+        .short-video { flex: 0 0 220px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.5); background: #000; }
+        .short-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+        @media (max-width: 768px) {
+            .short-event { flex-direction: column; padding: 28px 24px; gap: 28px; }
+            .short-video { flex: none; width: 100%; max-width: 260px; margin: 0 auto; }
+        }
+
         /* ══ TESTIMONIALS ══ */
         #testimonials { padding: 120px 0; background: var(--bg-surface); }
         .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 56px; }
@@ -886,6 +898,22 @@
 <!-- ══ EVENTS ══ -->
 <section id="events">
     <div class="container">
+        <!-- ── Short promo MasterClass (video integree, garde le visiteur sur le site) ── -->
+        <div class="short-wrapper reveal">
+            <span class="stras-label" style="color:var(--blue-bright);">🎬 Nouveau</span>
+            <div class="short-event">
+                <div class="short-content">
+                    <span class="ev-tag">MasterClass · 30 Août</span>
+                    <h3 class="stras-title">Ton départ sur les marchés financiers</h3>
+                    <p class="stras-desc">En 40 secondes, découvre pourquoi la MasterClass 100% gratuite du 30 août peut être ton point de départ sur les marchés financiers.</p>
+                    <a href="https://form.jotform.com/261735527465363" target="_blank" rel="noopener noreferrer" class="ev-btn" style="display:inline-block; width:fit-content; margin-top:20px;">Réserve ta place gratuite</a>
+                </div>
+                <div class="short-video">
+                    <iframe src="https://www.youtube-nocookie.com/embed/iyvdtkJZG2A" title="TapiTrade — Ton départ sur les marchés financiers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
         <!-- ── Strasbourg (evenement passe, garde comme preuve sociale du presentiel) ── -->
         <div class="stras-wrapper reveal">
             <span class="stras-label">✅ Événement passé</span>
