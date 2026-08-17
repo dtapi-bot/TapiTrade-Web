@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tapi-trade-web.vercel.app"
+        }
+      ],
+      "destination": "https://www.tapitrade.com/:path*",
+      "permanent": true
+    }
+  ]
+}
