@@ -78,6 +78,7 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .d1 { transition-delay: 0.10s; } .d2 { transition-delay: 0.20s; }
         .d3 { transition-delay: 0.30s; } .d4 { transition-delay: 0.40s; }
+        .d5 { transition-delay: 0.50s; }
 
         /* ══ NAV ══ */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 6px 0; transition: all 0.4s ease; }
@@ -213,12 +214,13 @@
         /* Tous les labels en dessous de l'icône */
         .sat-label { top: calc(100% + 9px); left: 50%; transform: translateX(-50%); text-align: center; }
 
-        /* pentagon : centre (550,400) r=340 */
+        /* hexagone : centre (550,400) r=340 */
         .sat-1 { left: 550px; top: 60px;  animation-delay: 0.6s; }
-        .sat-2 { left: 873px; top: 295px; animation-delay: 0.7s; }
-        .sat-3 { left: 750px; top: 675px; animation-delay: 0.8s; }
-        .sat-4 { left: 350px; top: 675px; animation-delay: 0.8s; }
-        .sat-5 { left: 150px; top: 295px; animation-delay: 0.7s; }
+        .sat-2 { left: 844px; top: 230px; animation-delay: 0.65s; }
+        .sat-3 { left: 844px; top: 570px; animation-delay: 0.7s; }
+        .sat-4 { left: 550px; top: 740px; animation-delay: 0.75s; }
+        .sat-5 { left: 256px; top: 570px; animation-delay: 0.8s; }
+        .sat-6 { left: 256px; top: 230px; animation-delay: 0.85s; }
 
         /* Hero center content (inside orbit) */
         .hero-center {
@@ -319,7 +321,7 @@
         .section-divider { width: 40px; height: 2px; background: var(--blue); margin: 14px auto; }
         .section-h2 { font-family: var(--font-display); font-size: clamp(26px,3.2vw,44px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; }
         .section-sub { font-size: 17px; color: var(--text-secondary); max-width: 480px; margin: 18px auto 0; line-height: 1.65; }
-        .pillars-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+        .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
         .pillar { padding: 38px 18px 30px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; text-align: center; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
         .pillar::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue-bright), transparent); transform: scaleX(0); transition: transform 0.4s; }
         .pillar:hover::before { transform: scaleX(1); }
@@ -457,7 +459,6 @@
         }
 
         @media (max-width: 1024px) {
-            .pillars-grid { grid-template-columns: repeat(3,1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
             .founder-grid { grid-template-columns: 1fr 1fr; gap: 52px; }
         }
@@ -652,7 +653,7 @@
             <circle cx="550" cy="400" r="340" fill="none" stroke="rgba(26,64,200,0.18)" stroke-width="1" stroke-dasharray="4 12"/>
         </svg>
 
-        <!-- SATELLITE 1 — Analyse Technique (top, label above) -->
+        <!-- SATELLITE 1 — Analyse Technique -->
         <div class="sat sat-1">
             <div class="sat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -664,8 +665,22 @@
             <span class="sat-label">Analyse Technique</span>
         </div>
 
-        <!-- SATELLITE 2 — Macroéconomie (right-up, label right) -->
+        <!-- SATELLITE 2 — Analyse Fondamentale -->
         <div class="sat sat-2">
+            <div class="sat-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2h9l5 5v15H6V2z"/>
+                    <polyline points="15,2 15,7 20,7"/>
+                    <line x1="9" y1="9" x2="12" y2="9"/>
+                    <line x1="9" y1="13" x2="15" y2="13"/>
+                    <line x1="9" y1="17" x2="15" y2="17"/>
+                </svg>
+            </div>
+            <span class="sat-label">Analyse Fondamentale</span>
+        </div>
+
+        <!-- SATELLITE 3 — Macroéconomie -->
+        <div class="sat sat-3">
             <div class="sat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                     <circle cx="12" cy="12" r="10"/>
@@ -678,8 +693,8 @@
             <span class="sat-label">Macroéconomie</span>
         </div>
 
-        <!-- SATELLITE 3 — Géopolitique (right-down, label below) -->
-        <div class="sat sat-3">
+        <!-- SATELLITE 4 — Géopolitique -->
+        <div class="sat sat-4">
             <div class="sat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 5l6 2 6-2 6 2v13l-6-2-6 2-6-2V5z"/>
@@ -690,8 +705,8 @@
             <span class="sat-label">Géopolitique</span>
         </div>
 
-        <!-- SATELLITE 4 — Gestion du Risque (left-down, label below) -->
-        <div class="sat sat-4">
+        <!-- SATELLITE 5 — Gestion du Risque -->
+        <div class="sat sat-5">
             <div class="sat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2L3 6v6c0 5.5 3.5 10 9 12 5.5-2 9-6.5 9-12V6L12 2z"/>
@@ -701,8 +716,8 @@
             <span class="sat-label">Gestion du Risque</span>
         </div>
 
-        <!-- SATELLITE 5 — Psychologie (left-up, label left) -->
-        <div class="sat sat-5">
+        <!-- SATELLITE 6 — Psychologie -->
+        <div class="sat sat-6">
             <div class="sat-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 2a5 5 0 0 0-5 5v.5A4.5 4.5 0 0 0 5.5 16H8v3h8v-3h2.5A4.5 4.5 0 0 0 20 7.5V7a5 5 0 0 0-5-5H9z"/>
@@ -812,15 +827,16 @@
         <div class="section-head">
             <span class="label reveal">L'approche TapiTrade</span>
             <div class="section-divider"></div>
-            <h2 class="section-h2 reveal d1">Cinq Piliers.<br>Une vue d'ensemble.</h2>
-            <p class="section-sub reveal d2">Comprendre les marchés exige bien plus que l'analyse technique. Voici les cinq piliers qui structurent chaque décision.</p>
+            <h2 class="section-h2 reveal d1">Six Piliers.<br>Une vue d'ensemble.</h2>
+            <p class="section-sub reveal d2">Comprendre les marchés exige bien plus que l'analyse technique. Voici les six piliers qui structurent chaque décision.</p>
         </div>
         <div class="pillars-grid">
             <div class="pillar reveal"><div class="pillar-n">01</div><span class="pillar-icon">📈</span><h3 class="pillar-h">Analyse Technique</h3><p class="pillar-p">Lire les graphiques, identifier les structures de prix et reconnaître les patterns de marché.</p></div>
-            <div class="pillar reveal d1"><div class="pillar-n">02</div><span class="pillar-icon">🌐</span><h3 class="pillar-h">Macroéconomie</h3><p class="pillar-p">Comprendre les cycles économiques et l'impact des politiques monétaires sur les marchés.</p></div>
-            <div class="pillar reveal d2"><div class="pillar-n">03</div><span class="pillar-icon">🗺️</span><h3 class="pillar-h">Géopolitique</h3><p class="pillar-p">Anticiper comment les événements mondiaux influencent les flux de capitaux et valorisations.</p></div>
-            <div class="pillar reveal d3"><div class="pillar-n">04</div><span class="pillar-icon">⚖️</span><h3 class="pillar-h">Gestion du Risque</h3><p class="pillar-p">Protéger son capital. La discipline de ne jamais risquer ce qu'on ne peut se permettre de perdre.</p></div>
-            <div class="pillar reveal d4"><div class="pillar-n">05</div><span class="pillar-icon">🧠</span><h3 class="pillar-h">Psychologie</h3><p class="pillar-p">Maîtriser ses émotions, éviter les biais cognitifs et décider rationnellement sous pression.</p></div>
+            <div class="pillar reveal d1"><div class="pillar-n">02</div><span class="pillar-icon">📊</span><h3 class="pillar-h">Analyse Fondamentale</h3><p class="pillar-p">Évaluer la santé financière d'une entreprise — croissance, rentabilité et valorisation — grâce à TapiTrade Analytics.</p></div>
+            <div class="pillar reveal d2"><div class="pillar-n">03</div><span class="pillar-icon">🌐</span><h3 class="pillar-h">Macroéconomie</h3><p class="pillar-p">Comprendre les cycles économiques et l'impact des politiques monétaires sur les marchés.</p></div>
+            <div class="pillar reveal d3"><div class="pillar-n">04</div><span class="pillar-icon">🗺️</span><h3 class="pillar-h">Géopolitique</h3><p class="pillar-p">Anticiper comment les événements mondiaux influencent les flux de capitaux et valorisations.</p></div>
+            <div class="pillar reveal d4"><div class="pillar-n">05</div><span class="pillar-icon">⚖️</span><h3 class="pillar-h">Gestion du Risque</h3><p class="pillar-p">Protéger son capital. La discipline de ne jamais risquer ce qu'on ne peut se permettre de perdre.</p></div>
+            <div class="pillar reveal d5"><div class="pillar-n">06</div><span class="pillar-icon">🧠</span><h3 class="pillar-h">Psychologie</h3><p class="pillar-p">Maîtriser ses émotions, éviter les biais cognitifs et décider rationnellement sous pression.</p></div>
         </div>
     </div>
 </section>
