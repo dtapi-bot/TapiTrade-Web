@@ -419,6 +419,9 @@
         .ev-h { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 10px; }
         .ev-p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.62; flex: 1; }
         .ev-date { margin-top: 20px; font-size: 13.5px; font-weight: 700; color: #F5C518; letter-spacing: 0.01em; }
+        .ev-dates { margin-top: 20px; display: flex; flex-direction: column; gap: 7px; }
+        .ev-date-row { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.01em; }
+        .ev-date-row.ev-date-next { font-size: 13.5px; font-weight: 700; color: #F5C518; }
         .ev-foot { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-bright); line-height: 1.5; }
         .ev-btn { display: block; margin-top: 16px; padding: 11px 20px; text-align: center; background: transparent; border: 1px solid #F5C518; color: #F5C518; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s; }
         .ev-btn:hover { background: #F5C518; color: #040C1A; }
@@ -1025,8 +1028,13 @@
             <div class="ev-card reveal d2">
                 <span class="ev-tag">Zoom Mensuel</span>
                 <h3 class="ev-h">La communauté se retrouve</h3>
-                <p class="ev-p">Une fois par mois sur Discord, on se retrouve en live pour réseauter, analyser les marchés, partager les performances, les erreurs et les opportunités. Ensemble, on progresse plus vite.</p>
-                <div class="ev-date">Prochain RDV : 16 Août 2026 · 20h00 (Paris)</div>
+                <p class="ev-p">Une fois par mois sur Discord, on se retrouve en live sur Zoom pour réseauter, analyser les marchés, partager les performances, les erreurs et les opportunités. Ensemble, on progresse plus vite.</p>
+                <div class="ev-dates">
+                    <div class="ev-date-row ev-date-next">06 Septembre 2026 · 20h00 (Berlin/Paris)</div>
+                    <div class="ev-date-row">04 Octobre 2026 · 20h00 (Berlin/Paris)</div>
+                    <div class="ev-date-row">08 Novembre 2026 · 20h00 (Berlin/Paris)</div>
+                    <div class="ev-date-row">06 Décembre 2026 · 20h00 (Berlin/Paris)</div>
+                </div>
                 <div class="ev-foot">Réservé aux membres<br>de la communauté</div>
                 <a href="https://discord.gg/bBTS2pAUG7" target="_blank" class="ev-btn">Rejoins DISCORD</a>
             </div>
