@@ -101,6 +101,41 @@
         .mob-nav a { font-family: var(--font-display); font-size: 34px; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.025em; transition: color 0.2s; }
         .mob-nav a:hover { color: var(--blue-bright); }
 
+        /* ── Bandeau d'annonces (ticker) ── */
+        .nav-ticker {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(8,15,28,0.72);
+            border-top: 1px solid var(--border);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+                    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+        }
+        .nav-ticker-track {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            padding: 9px 0;
+            animation: tickerScroll 34s linear infinite;
+        }
+        .nav-ticker:hover .nav-ticker-track { animation-play-state: paused; }
+        .nav-ticker-item {
+            font-size: 12px; font-weight: 500;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            padding: 0 28px;
+        }
+        .nav-ticker-sep { color: var(--blue-bright); opacity: 0.55; font-size: 11px; }
+        @keyframes tickerScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .nav-ticker-track { animation: none; }
+        }
+        @media (max-width: 768px) {
+            .nav-ticker-item { font-size: 11px; padding: 0 18px; }
+        }
+
         /* ══ BUTTONS ══ */
         .btn-blue { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; font-family: var(--font-body); font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
         .btn-blue:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(26,64,200,0.38); }
@@ -118,7 +153,7 @@
             min-height: 100vh;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden; position: relative;
-            padding: 90px 0 60px;
+            padding: 128px 0 60px;
             background: radial-gradient(ellipse 100% 80% at 50% 0%, #071228 0%, var(--bg-deep) 60%);
         }
 
@@ -451,7 +486,7 @@
                 position: relative; top: auto; left: auto;
                 transform: none; width: 100%;
                 max-width: 620px; margin: 0 auto;
-                padding: 100px 24px 80px;
+                padding: 138px 24px 80px;
             }
             #hero { align-items: flex-start; padding: 0; }
             .hero-chart-wrap { width: clamp(180px,28vw,320px); }
@@ -527,6 +562,22 @@
             <div class="hamburger" id="ham" onclick="toggleNav()">
                 <span></span><span></span><span></span>
             </div>
+        </div>
+    </div>
+    <div class="nav-ticker" role="marquee" aria-label="Annonces TapiTrade">
+        <div class="nav-ticker-track">
+            <span class="nav-ticker-item">📊 Nouveau : L'Analyse Fondamentale « simplifiée » est disponible sur notre tool TapiTrade Analytics</span>
+            <span class="nav-ticker-sep">•</span>
+            <span class="nav-ticker-item">📅 MasterClass gratuite — Dimanche 30 août, 20h00 (Berlin/Paris) sur inscription — places limitées</span>
+            <span class="nav-ticker-sep">•</span>
+            <span class="nav-ticker-item">💬 Rejoins notre communauté Discord active — analyses et partages 100% gratuits</span>
+            <span class="nav-ticker-sep">•</span>
+            <span class="nav-ticker-item" aria-hidden="true">📊 Nouveau : L'Analyse Fondamentale « simplifiée » est disponible sur notre tool TapiTrade Analytics</span>
+            <span class="nav-ticker-sep" aria-hidden="true">•</span>
+            <span class="nav-ticker-item" aria-hidden="true">📅 MasterClass gratuite — Dimanche 30 août, 20h00 (Berlin/Paris) sur inscription — places limitées</span>
+            <span class="nav-ticker-sep" aria-hidden="true">•</span>
+            <span class="nav-ticker-item" aria-hidden="true">💬 Rejoins notre communauté Discord active — analyses et partages 100% gratuits</span>
+            <span class="nav-ticker-sep" aria-hidden="true">•</span>
         </div>
     </div>
 </nav>
@@ -776,7 +827,7 @@
                 <div class="stat-lbl">Opérations réelles</div>
             </div>
             <div class="stat-item reveal d1">
-                <div class="stat-num"><span>5</span></div>
+                <div class="stat-num"><span>6</span></div>
                 <div class="stat-lbl">Piliers</div>
             </div>
             <div class="stat-item reveal d2">
@@ -947,13 +998,13 @@
             </div>
         </div>
 
-        <div class="section-head" id="offers" style="scroll-margin-top:80px;">
+        <div class="section-head" id="offers" style="scroll-margin-top:118px;">
             <span class="label reveal">TapiTrade propose</span>
             <div class="section-divider"></div>
             <h2 class="section-h2 reveal d1">Sur annonces</h2>
         </div>
         <div class="events-grid">
-            <div class="ev-card reveal" id="masterclass-offer" style="scroll-margin-top:80px;">
+            <div class="ev-card reveal" id="masterclass-offer" style="scroll-margin-top:118px;">
                 <span class="ev-tag">Masterclass</span>
                 <h3 class="ev-h">100% Gratuite - Ouvertes à tous</h3>
                 <p class="ev-p">Conçues pour démystifier les marchés financiers et montrer qu'ils sont accessibles à n'importe qui, peu importe son niveau de départ.</p>
@@ -961,7 +1012,7 @@
                 <div class="ev-foot">Aucun prérequis —<br>juste la volonté d'apprendre</div>
                 <a href="https://form.jotform.com/261735527465363" target="_blank" class="ev-btn">Réserve ta place</a>
             </div>
-            <div class="ev-card reveal d1" id="workshop-offer" style="scroll-margin-top:80px;">
+            <div class="ev-card reveal d1" id="workshop-offer" style="scroll-margin-top:118px;">
                 <span class="ev-tag">Workshop</span>
                 <h3 class="ev-h">Un programme structuré</h3>
                 <p class="ev-p">Un parcours intensif 5-6 semaines avec un plan de travail clair. Compréhension de base (incl. ouverture du compte d'investissement), analyse technique et fondamentaux : tout ce qu'il faut pour investir avec méthode et conviction.</p>
