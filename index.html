@@ -119,12 +119,13 @@
         }
         .nav-ticker:hover .nav-ticker-track { animation-play-state: paused; }
         .nav-ticker-item {
-            font-size: 12px; font-weight: 500;
+            font-size: 13.5px; font-weight: 500;
             color: var(--text-secondary);
             white-space: nowrap;
             padding: 0 28px;
         }
-        .nav-ticker-sep { color: var(--blue-bright); opacity: 0.55; font-size: 11px; }
+        .nav-ticker-gold { color: #F5C518; font-weight: 700; }
+        .nav-ticker-sep { color: var(--blue-bright); opacity: 0.55; font-size: 12px; }
         @keyframes tickerScroll {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); }
@@ -133,7 +134,7 @@
             .nav-ticker-track { animation: none; }
         }
         @media (max-width: 768px) {
-            .nav-ticker-item { font-size: 11px; padding: 0 18px; }
+            .nav-ticker-item { font-size: 12.5px; padding: 0 18px; }
         }
 
         /* ══ BUTTONS ══ */
@@ -566,13 +567,13 @@
     </div>
     <div class="nav-ticker" role="marquee" aria-label="Annonces TapiTrade">
         <div class="nav-ticker-track">
-            <span class="nav-ticker-item">📊 Nouveau : L'Analyse Fondamentale « simplifiée » est disponible sur notre tool TapiTrade Analytics</span>
+            <span class="nav-ticker-item">📊 Nouveau : L'Analyse Fondamentale « simplifiée » est disponible sur notre tool <span class="nav-ticker-gold">TapiTrade Analytics</span></span>
             <span class="nav-ticker-sep">•</span>
             <span class="nav-ticker-item">📅 MasterClass gratuite — Dimanche 30 août, 20h00 (Berlin/Paris) sur inscription — places limitées</span>
             <span class="nav-ticker-sep">•</span>
             <span class="nav-ticker-item">💬 Rejoins notre communauté Discord active — analyses et partages 100% gratuits</span>
             <span class="nav-ticker-sep">•</span>
-            <span class="nav-ticker-item" aria-hidden="true">📊 Nouveau : L'Analyse Fondamentale « simplifiée » est disponible sur notre tool TapiTrade Analytics</span>
+            <span class="nav-ticker-item" aria-hidden="true">📊 Nouveau : L'Analyse Fondamentale « simplifiée » est disponible sur notre tool <span class="nav-ticker-gold">TapiTrade Analytics</span></span>
             <span class="nav-ticker-sep" aria-hidden="true">•</span>
             <span class="nav-ticker-item" aria-hidden="true">📅 MasterClass gratuite — Dimanche 30 août, 20h00 (Berlin/Paris) sur inscription — places limitées</span>
             <span class="nav-ticker-sep" aria-hidden="true">•</span>
