@@ -449,9 +449,12 @@
         .short-content { flex: 1; display: flex; flex-direction: column; }
         .short-video { flex: 0 0 220px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.5); background: #000; }
         .short-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+        .shorts-scroll { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+        .shorts-scroll .short-video { scroll-snap-align: start; }
         @media (max-width: 768px) {
             .short-event { flex-direction: column; padding: 28px 24px; gap: 28px; }
             .short-video { flex: none; width: 100%; max-width: 260px; margin: 0 auto; }
+            .shorts-scroll .short-video { width: 220px; max-width: none; margin: 0; }
         }
 
         /* ══ TESTIMONIALS ══ */
@@ -965,22 +968,14 @@
 <!-- ══ EVENTS ══ -->
 <section id="events">
     <div class="container">
-        <!-- ── Short promo MasterClass (video integree, garde le visiteur sur le site) ── -->
+        <!-- ── Bon à savoir : Shorts YouTube qui defilent ──
+             Pour ajouter un nouveau Short : dupliquer le bloc <div class="short-video">...</div>
+             ci-dessous avec le nouvel ID video (dans l'URL youtube.com/shorts/ID). ── -->
         <div class="short-wrapper reveal">
-            <span class="stras-label" style="color:var(--blue-bright);">🎬 Nouveau</span>
-            <div class="short-event">
-                <div class="short-content">
-                    <span class="ev-tag">MasterClass · 30 Août · 20h00 (Heure de Berlin/Paris)</span>
-                    <h3 class="stras-title">Ton départ sur les marchés financiers</h3>
-                    <p class="stras-desc">Tu veux comprendre les marchés financiers mais tu ne sais pas par où commencer ? 🤔<br><br>
-                    Dimanche 30 août à 20h00 (Heure de Berlin/Paris), je t'explique tout en 45 minutes, sans jargon, sans théorie inutile. ✅<br><br>
-                    Je te montre en live un compte réel que j'ai ouvert en mars et je réponds à toutes tes questions en direct. 🎯<br><br>
-                    100% gratuit. En ligne. Places limitées ⏳<br><br>
-                    Clique et inscris-toi 👇</p>
-                    <a href="https://form.jotform.com/261735527465363" target="_blank" rel="noopener noreferrer" class="ev-btn" style="display:inline-block; width:fit-content; margin-top:20px;">Réserve ta place gratuite</a>
-                </div>
+            <span class="stras-label" style="color:var(--blue-bright);">📌 Bon à savoir</span>
+            <div class="shorts-scroll">
                 <div class="short-video">
-                    <iframe src="https://www.youtube-nocookie.com/embed/iyvdtkJZG2A" title="TapiTrade — Ton départ sur les marchés financiers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/dnbTgouCp6M" title="TapiTrade — Bon à savoir" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
