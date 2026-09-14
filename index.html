@@ -92,6 +92,12 @@
         .nav-btn:hover { background: var(--blue-light) !important; transform: translateY(-1px); }
         .nav-btn-analytics { padding: 9px 22px; background: transparent; color: var(--white) !important; border-radius: 4px; font-weight: 600 !important; font-size: 13px !important; border: 1px solid rgba(77,114,255,0.6); transition: background 0.2s, border-color 0.2s, transform 0.2s !important; }
         .nav-btn-analytics:hover { background: rgba(77,114,255,0.15) !important; border-color: #4D72FF !important; transform: translateY(-1px); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > a::after { content: '▾'; font-size: 9px; margin-left: 6px; }
+        .nav-dropdown-menu { position: absolute; top: 100%; right: 0; margin-top: 10px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 7px; min-width: 175px; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s, visibility 0.2s; box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
+        .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-dropdown-menu a { display: block; padding: 9px 12px; border-radius: 6px; color: var(--white); font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+        .nav-dropdown-menu a:hover { background: rgba(77,114,255,0.15); }
         .nav-btn-simulateur { padding: 9px 22px; background: transparent; color: #FEEF77 !important; border-radius: 4px; font-weight: 600 !important; font-size: 13px !important; border: 1px solid rgba(254,239,119,0.45); transition: background 0.2s, border-color 0.2s, transform 0.2s !important; }
         .nav-btn-simulateur:hover { background: rgba(254,239,119,0.08) !important; border-color: #FEEF77 !important; transform: translateY(-1px); }
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
@@ -576,9 +582,14 @@
                 <li><a href="#community">Communauté</a></li>
                 <li><a href="#offers">Workshop</a></li>
                 <li><a href="#testimonials">Témoignages</a></li>
-                <li style="margin-left:auto;"><a href="budget.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Budget</a></li>
-                <li><a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Simulateur</a></li>
-                <li><a href="https://analytics.tapitrade.com" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Analytics</a></li>
+                <li class="nav-dropdown" style="margin-left:auto;">
+                    <a href="https://analytics.tapitrade.com" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Outils TapiTrade</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="budget.html" target="_blank" rel="noopener noreferrer">Budget</a>
+                        <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer">Simulateur</a>
+                        <a href="https://analytics.tapitrade.com" target="_blank" rel="noopener noreferrer">Analytics</a>
+                    </div>
+                </li>
             </ul>
             <div class="hamburger" id="ham" onclick="toggleNav()">
                 <span></span><span></span><span></span>
@@ -957,17 +968,17 @@
             <p class="section-sub reveal d2">Accède aux ressources, analyses et communauté TapiTrade sur les plateformes de ton choix.</p>
         </div>
         <div class="comm-grid">
-            <a href="https://www.youtube.com/@tapitrade2.5" target="_blank" rel="noopener" class="comm-card reveal">
-                <div class="comm-icon" style="background:rgba(255,50,50,0.12);color:#FF4444;">▶</div>
-                <div class="comm-title">YouTube</div>
-                <p class="comm-desc">Analyses de marchés, masterclass et contenus éducatifs en vidéo. Disponibles gratuitement, sans abonnement.</p>
-                <span class="comm-link">@tapitrade2.5 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </a>
-            <a href="https://discord.gg/bBTS2pAUG7" target="_blank" rel="noopener" class="comm-card reveal d1">
+            <a href="https://discord.gg/bBTS2pAUG7" target="_blank" rel="noopener" class="comm-card reveal">
                 <div class="comm-icon" style="background:rgba(88,101,242,0.12);color:#5865F2;">⬡</div>
                 <div class="comm-title">Discord</div>
                 <p class="comm-desc">La communauté active. Échanges en temps réel, analyses partagées et support entre membres.</p>
                 <span class="comm-link">Rejoindre le serveur <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+            <a href="https://www.youtube.com/@tapitrade2.5" target="_blank" rel="noopener" class="comm-card reveal d1">
+                <div class="comm-icon" style="background:rgba(255,50,50,0.12);color:#FF4444;">▶</div>
+                <div class="comm-title">YouTube</div>
+                <p class="comm-desc">Analyses de marchés, masterclass et contenus éducatifs en vidéo. Disponibles gratuitement, sans abonnement.</p>
+                <span class="comm-link">@tapitrade2.5 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </a>
             <a href="https://www.facebook.com/TapiTrade" target="_blank" rel="noopener" class="comm-card reveal d2">
                 <div class="comm-icon" style="background:rgba(24,119,242,0.12);color:#1877F2;">f</div>
