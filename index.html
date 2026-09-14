@@ -413,6 +413,18 @@
         /* ══ EVENTS ══ */
         #events { padding: 120px 0; }
         .events-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+        .events-grid-2col { grid-template-columns: repeat(2,1fr); max-width: 700px; margin: 0 auto; }
+        .events-scroll-wrap { max-width: 700px; margin: 0 auto; }
+        .events-scroll { display: flex; gap: 20px; overflow-x: auto; padding: 4px 4px 12px; scroll-snap-type: x mandatory; }
+        .events-scroll .ev-card { flex: 0 0 340px; scroll-snap-align: start; }
+        @media (max-width: 768px) { .events-scroll .ev-card { flex: 0 0 82vw; max-width: 340px; } }
+        .workshop-grid { display: grid; grid-template-columns: 1fr 460px; gap: 64px; align-items: center; margin-bottom: 100px; }
+        .workshop-img-wrap { border-radius: 16px; overflow: hidden; border: 1px solid rgba(77,114,255,0.35); box-shadow: 0 0 70px rgba(26,64,200,0.2); }
+        .workshop-img-wrap img { width: 100%; display: block; }
+        .workshop-list { list-style: none; margin: 26px 0 34px; display: flex; flex-direction: column; gap: 13px; }
+        .workshop-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-secondary); font-size: 15px; line-height: 1.5; }
+        .workshop-list li b { color: #fff; }
+        .workshop-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: rgba(77,114,255,0.15); color: var(--blue-bright); display: flex; align-items: center; justify-content: center; font-size: 12px; margin-top: 2px; }
         .ev-card { padding: 32px 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s; display: flex; flex-direction: column; }
         .ev-card:hover { border-color: var(--blue-border); background: var(--bg-card-h); }
         .ev-tag { display: inline-block; padding: 4px 11px; background: var(--blue-dim); border: 1px solid var(--blue-border); border-radius: 100px; font-size: 10.5px; font-weight: 600; color: var(--blue-bright); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
@@ -503,6 +515,7 @@
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
             .founder-grid { grid-template-columns: 1fr 1fr; gap: 52px; }
+            .workshop-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
 
         @media (max-width: 768px) {
@@ -515,6 +528,7 @@
             .mission-grid { grid-template-columns: 1fr; gap: 48px; }
             .pillars-grid { grid-template-columns: repeat(2,1fr); }
             .founder-grid { grid-template-columns: 1fr; }
+            .workshop-grid { grid-template-columns: 1fr; gap: 36px; margin-bottom: 70px; }
             .founder-quote-block { margin-bottom: 48px; }
             .founder-quote-mark { font-size: 56px; }
             .founder-stats { flex-direction: row; }
@@ -560,7 +574,7 @@
                 <li><a href="#pillars">Approche</a></li>
                 <li><a href="#founder">Fondateur</a></li>
                 <li><a href="#community">Communauté</a></li>
-                <li><a href="#offers">Annonces</a></li>
+                <li><a href="#offers">Workshop</a></li>
                 <li><a href="#testimonials">Témoignages</a></li>
                 <li style="margin-left:auto;"><a href="budget.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Budget</a></li>
                 <li><a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="nav-btn-analytics">Simulateur</a></li>
@@ -590,7 +604,7 @@
     <a href="#pillars" onclick="toggleNav()">Approche</a>
     <a href="#founder" onclick="toggleNav()">Fondateur</a>
     <a href="#community" onclick="toggleNav()">Communauté</a>
-    <a href="#offers" onclick="toggleNav()">Annonces</a>
+    <a href="#offers" onclick="toggleNav()">Workshop</a>
     <a href="#testimonials" onclick="toggleNav()">Témoignages</a>
     <a href="budget.html" target="_blank" rel="noopener noreferrer" class="btn-blue" style="font-size:18px;padding:14px 32px;background:transparent;border:1px solid rgba(77,114,255,0.6);color:#fff;" onclick="toggleNav()">Budget</a>
     <a href="https://analytics.tapitrade.com/simulateur.html" target="_blank" rel="noopener noreferrer" class="btn-blue" style="font-size:18px;padding:14px 32px;background:transparent;border:1px solid rgba(77,114,255,0.6);color:#fff;" onclick="toggleNav()">Simulateur</a>
@@ -992,8 +1006,68 @@
             </div>
         </div>
 
+        <div class="workshop-grid" id="offers" style="scroll-margin-top:118px;">
+            <div>
+                <span class="label reveal">TapiTrade propose</span>
+                <div class="section-divider reveal"></div>
+                <h2 class="section-h2 reveal d1">Le Workshop TapiTrade</h2>
+                <p class="section-sub reveal d2">6 semaines pour comprendre les marchés, analyser une opportunité et agir par toi-même. Contenu vidéo distillé chaque semaine, un Live hebdomadaire avec l'équipe TapiTrade, et 1 an d'accès à TapiTrade Analytics Pro inclus (valeur 200€).</p>
+                <ul class="workshop-list reveal d3">
+                    <li><span class="workshop-check">✓</span><span><b>Les Bases</b> — comprendre les marchés et ouvrir ton compte d'investissement.</span></li>
+                    <li><span class="workshop-check">✓</span><span><b>La Technique</b> — analyse technique et fondamentale, pas à pas.</span></li>
+                    <li><span class="workshop-check">✓</span><span><b>Stratégies</b> — Risk &amp; Money Management, psychologie et discipline pour construire ton propre processus.</span></li>
+                    <li><span class="workshop-check">✓</span><span><b>Live hebdomadaire</b> — pratique et questions avec l'équipe TapiTrade, chaque semaine.</span></li>
+                    <li><span class="workshop-check">✓</span><span><b>Accès à vie à la communauté Discord</b> — pour continuer à progresser même après le Workshop.</span></li>
+                </ul>
+                <p class="section-sub reveal d3" style="margin-bottom:0;">Tu peux commencer quand tu veux —<br><b style="color:#F5C451;font-weight:700;">Tu t'inscris, et tu commences directement 🚀</b></p>
+                <p class="section-sub reveal d3" style="margin-top:10px;margin-bottom:0;font-size:13.5px;">Paiement en tranches possible par Klarna.</p>
+                <div class="reveal d4" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;">
+                    <a href="/workshop" target="_blank" rel="noopener" class="btn-blue">
+                        Découvrir le Workshop
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="https://wa.me/4915565290159" target="_blank" rel="noopener" class="btn-ghost">Une question ?</a>
+                </div>
+            </div>
+            <div class="reveal d1">
+                <div class="workshop-img-wrap">
+                    <img src="assets/Contenu-Workshop.png" alt="Programme du Workshop TapiTrade : Bienvenue, Les Bases, La Technique, Stratégies">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-head" style="text-align:center;">
+            <span class="label reveal">À ton rythme, en communauté</span>
+            <div class="section-divider" style="margin:0 auto 20px;"></div>
+            <h2 class="section-h2 reveal d1">Événements</h2>
+        </div>
+        <div class="events-scroll-wrap">
+        <div class="events-scroll">
+            <div class="ev-card reveal">
+                <span class="ev-tag">Zoom Mensuel</span>
+                <h3 class="ev-h">La communauté se retrouve</h3>
+                <p class="ev-p">Une fois par mois sur Discord, on se retrouve en live sur Zoom pour réseauter, analyser les marchés, partager les performances, les erreurs et les opportunités. Ensemble, on progresse plus vite.</p>
+                <div class="ev-dates">
+                    <div class="ev-date-row ev-date-next">04 Octobre 2026 · 20h00 (Berlin/Paris)</div>
+                    <div class="ev-date-row">08 Novembre 2026 · 20h00 (Berlin/Paris)</div>
+                    <div class="ev-date-row">06 Décembre 2026 · 20h00 (Berlin/Paris)</div>
+                </div>
+                <div class="ev-foot">Réservé aux membres<br>de la communauté</div>
+                <a href="https://discord.gg/bBTS2pAUG7" target="_blank" class="ev-btn">Rejoins DISCORD</a>
+            </div>
+            <div class="ev-card reveal d1" id="masterclass-offer" style="scroll-margin-top:118px;">
+                <span class="ev-tag">Masterclass</span>
+                <h3 class="ev-h">100% Gratuite - Ouvertes à tous</h3>
+                <p class="ev-p">Conçues pour démystifier les marchés financiers et montrer qu'ils sont accessibles à n'importe qui, peu importe son niveau de départ.</p>
+                <div class="ev-date" style="color:var(--text-muted);">Prochain rendez-vous : fin 2026</div>
+                <div class="ev-foot">Aucun prérequis —<br>juste la volonté d'apprendre</div>
+                <a href="https://form.jotform.com/261735527465363" target="_blank" class="ev-btn" style="border-color:var(--text-muted);color:var(--text-muted);">Réserve ta place</a>
+            </div>
+        </div>
+        </div>
+
         <!-- ── Strasbourg (evenement passe, garde comme preuve sociale du presentiel) ── -->
-        <div class="stras-wrapper reveal">
+        <div class="stras-wrapper reveal" style="margin-top:64px;">
             <span class="stras-label">✅ Événement passé</span>
             <div class="stras-event" style="border-color:var(--border);">
                 <div class="stras-content">
@@ -1002,44 +1076,6 @@
                     <p class="stras-desc">Une soirée pour découvrir comment les marchés financiers peuvent devenir un levier puissant pour construire votre patrimoine sur le long terme. Accessible à tous, sans prérequis.</p>
                     <div class="ev-date" style="margin-top:20px;margin-bottom:4px;color:var(--text-secondary);">Mercredi 29 Juillet 2026 &middot; 17h30 – 20h00</div>
                 </div>
-            </div>
-        </div>
-
-        <div class="section-head" id="offers" style="scroll-margin-top:118px;">
-            <span class="label reveal">TapiTrade propose</span>
-            <div class="section-divider"></div>
-            <h2 class="section-h2 reveal d1">Sur annonces</h2>
-        </div>
-        <div class="events-grid">
-            <div class="ev-card reveal" id="masterclass-offer" style="scroll-margin-top:118px;">
-                <span class="ev-tag">Masterclass</span>
-                <h3 class="ev-h">100% Gratuite - Ouvertes à tous</h3>
-                <p class="ev-p">Conçues pour démystifier les marchés financiers et montrer qu'ils sont accessibles à n'importe qui, peu importe son niveau de départ.</p>
-                <div class="ev-date" style="color:var(--text-muted);">Prochain rendez-vous : fin 2026</div>
-                <div class="ev-foot">Aucun prérequis —<br>juste la volonté d'apprendre</div>
-                <a href="https://form.jotform.com/261735527465363" target="_blank" class="ev-btn" style="border-color:var(--text-muted);color:var(--text-muted);">Réserve ta place</a>
-            </div>
-            <div class="ev-card reveal d1" id="workshop-offer" style="scroll-margin-top:118px;">
-                <span class="ev-tag">Workshop</span>
-                <h3 class="ev-h">Un programme structuré</h3>
-                <p class="ev-p">Un parcours intensif 5 semaines avec un plan de travail clair. Compréhension de base (incl. ouverture du compte d'investissement), analyse technique et fondamentaux : tout ce qu'il faut pour investir avec méthode et conviction.</p>
-                <p class="ev-p" style="margin-top:10px; color:var(--blue-bright);">→ Accès aux salons DISCORD / Analyses — Indices — Actifs et Performances, et 1 an d'accès à TapiTrade Analytics version Pro.</p>
-                <div class="ev-date">Prochain démarrage : 13 septembre 2026<span style="display:block; margin-top:4px; font-size:11.5px; font-weight:600; color:#f87171; letter-spacing:0;">⏳ Dernières places disponibles</span></div>
-                <div class="ev-foot">Places limitées<span style="display:block; margin-top:6px; font-size:11px; font-weight:400; letter-spacing:0; text-transform:none; color:var(--text-secondary);">Plus de détails et validation après inscription et entretien</span></div>
-                <a href="https://form.jotform.com/261573938896377" target="_blank" class="ev-btn">Je suis intéressé(e)</a>
-            </div>
-            <div class="ev-card reveal d2">
-                <span class="ev-tag">Zoom Mensuel</span>
-                <h3 class="ev-h">La communauté se retrouve</h3>
-                <p class="ev-p">Une fois par mois sur Discord, on se retrouve en live sur Zoom pour réseauter, analyser les marchés, partager les performances, les erreurs et les opportunités. Ensemble, on progresse plus vite.</p>
-                <div class="ev-dates">
-                    <div class="ev-date-row ev-date-next">06 Septembre 2026 · 20h00 (Berlin/Paris)</div>
-                    <div class="ev-date-row">04 Octobre 2026 · 20h00 (Berlin/Paris)</div>
-                    <div class="ev-date-row">08 Novembre 2026 · 20h00 (Berlin/Paris)</div>
-                    <div class="ev-date-row">06 Décembre 2026 · 20h00 (Berlin/Paris)</div>
-                </div>
-                <div class="ev-foot">Réservé aux membres<br>de la communauté</div>
-                <a href="https://discord.gg/bBTS2pAUG7" target="_blank" class="ev-btn">Rejoins DISCORD</a>
             </div>
         </div>
     </div>
@@ -1154,7 +1190,7 @@
                     <li><a href="#pillars">Approche</a></li>
                     <li><a href="#founder">Fondateur</a></li>
                     <li><a href="#community">Communauté</a></li>
-                    <li><a href="#offers">Annonces</a></li>
+                    <li><a href="#offers">Workshop</a></li>
                     <li><a href="#testimonials">Témoignages</a></li>
                 </ul>
             </div>

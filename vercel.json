@@ -11,5 +11,15 @@
       "destination": "https://www.tapitrade.com/:path*",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/workshop",
+      "destination": "https://landing-page-workshop-nine.vercel.app"
+    },
+    {
+      "source": "/workshop/:path*",
+      "destination": "https://landing-page-workshop-nine.vercel.app/:path*"
+    }
   ]
 }
